@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="제공된 SSAFY Front 과목평가 공지의 32개 토픽을 반영한 비공식 연습용 모의고사. 32문항, 자동 채점, 정답·해설, 60분 타이머.">
+<title>SSAFY Front · 32문항 실전 모의고사</title>
+<style>
+:root{color-scheme:light;--ink:#182b37;--muted:#64737e;--line:#dce3e5;--paper:#fff;--bg:#f2f5f4;--accent:#0a7869;--soft:#e7f3ef;--wrong:#a63e32;--wrong-bg:#fff0ed;--amber:#865b06;--amber-bg:#fff5d7;--radius:18px}
+*{box-sizing:border-box}html{scroll-padding-top:100px;scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}button,input,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:disabled{cursor:not-allowed;opacity:.5}a{color:var(--accent)}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #407cc8;outline-offset:3px}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.skip{position:fixed;top:-100px;left:20px;z-index:100;background:white;padding:10px 18px}.skip:focus{top:8px}.masthead{background:var(--ink);color:#fff;padding:18px max(24px,calc((100vw - 1240px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:800;font-size:16px;letter-spacing:.03em}.edition{color:#bac8cf;font-size:12px;letter-spacing:.13em}.hero{max-width:1240px;margin:0 auto;padding:48px 24px 32px}.eyebrow{margin:0 0 10px;font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:800}.hero h1{font-size:clamp(28px,3.6vw,44px);line-height:1.22;letter-spacing:-.05em;margin:0 0 18px;font-weight:800}.hero h1 span{color:var(--accent)}.subtitle{margin:0;max-width:760px;color:var(--muted);font-size:15px}.facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.fact{padding:7px 15px;background:var(--paper);border:1px solid var(--line);border-radius:100px;font-size:13px}.fact strong{font-size:15px;margin-right:4px}.notice{max-width:1192px;margin:0 auto 24px;background:#e9eeed;border-left:3px solid var(--accent);padding:16px 20px;border-radius:0 10px 10px 0;font-size:13px}.notice p{margin:0}.notice details{margin-top:9px}.notice summary{cursor:pointer;font-weight:700}.notice .conditions{color:#52636d;margin-top:8px;line-height:1.8}.toolbar{position:sticky;top:0;z-index:20;border-block:1px solid var(--line);background:rgba(255,255,255,.97);backdrop-filter:blur(12px)}.toolbar-inner{max-width:1240px;margin:auto;padding:13px 24px;display:flex;align-items:center;gap:18px}.progress-info{min-width:114px}.small-label{color:var(--muted);font-size:11px;letter-spacing:.04em}.progress-info strong{display:block;font-size:18px;line-height:1.2}.progress-track{height:6px;background:#e7edeb;border-radius:99px;max-width:360px;flex:1;overflow:hidden}.progress-fill{height:100%;width:0;background:var(--accent);transition:width .2s}.time-box{margin-left:auto;min-width:88px;text-align:center}.clock{font-size:23px;font-variant-numeric:tabular-nums;font-weight:750;line-height:1.2}.clock.urgent{color:var(--wrong)}.btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:9px 16px;font-size:13px;font-weight:700;white-space:nowrap}.btn:hover:not(:disabled){background:#edf3f0}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.primary:hover:not(:disabled){background:#086859}.btn.danger{color:var(--wrong)}.layout{max-width:1240px;margin:28px auto 0;padding:0 24px;display:grid;grid-template-columns:228px minmax(0,1fr);gap:24px;align-items:start}.sidebar{position:sticky;top:110px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:21px 18px}.sidebar h2{font-size:14px;margin:0 0 15px}.nav-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.nav-item{position:relative;display:grid;place-items:center;aspect-ratio:1;border:1px solid var(--line);border-radius:9px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;background:#fff}.nav-item.answered{background:var(--soft);border-color:#a4ccc0;color:var(--accent)}.nav-item.marked:after{content:"";position:absolute;right:3px;top:3px;background:#c18914;width:6px;height:6px;border-radius:50%}.nav-item.correct{background:var(--accent);border-color:var(--accent);color:#fff}.nav-item.wrong,.nav-item.unanswered-result{background:var(--wrong-bg);border-color:#d7a198;color:var(--wrong)}.legend{font-size:11px;color:var(--muted);margin:13px 0 18px}.legend .mark-dot{color:#b0780c}.side-actions{display:grid;gap:9px}.save-status{border-top:1px solid var(--line);margin:17px 0 0;padding-top:12px;font-size:11px;color:var(--muted);line-height:1.6}.contents{min-width:0}.question{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;margin-bottom:20px;scroll-margin-top:105px;box-shadow:0 3px 12px rgba(22,47,41,.025)}.question:focus{outline:none}.question:focus-visible{outline:3px solid #407cc8}.question-top{display:flex;align-items:center;gap:10px;margin-bottom:13px}.qnumber{font-size:26px;font-weight:800;line-height:1.1;letter-spacing:-.03em;color:var(--accent)}.category{font-size:11px;padding:3px 9px;background:var(--soft);color:var(--accent);border-radius:6px;font-weight:750}.difficulty{font-size:11px;color:var(--muted)}.mark{margin-left:auto;background:none;border:1px solid var(--line);border-radius:7px;color:var(--muted);padding:3px 8px;font-size:12px;white-space:nowrap}.mark[aria-pressed=true]{background:var(--amber-bg);border-color:#d9ba76;color:var(--amber)}.question h2{font-size:17px;line-height:1.75;font-weight:700;margin:0 0 20px;letter-spacing:-.015em}.codebox{border:1px solid #d7dfe2;border-radius:10px;overflow:hidden;margin:16px 0 20px;background:#f6f8fa}.code-label{font-size:10px;letter-spacing:.08em;color:#687985;border-bottom:1px solid #dfe6e9;padding:6px 15px;background:#eef2f5;font-weight:750}pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:12.5px;line-height:1.8;tab-size:2;padding:15px 17px;margin:0;overflow-x:auto;word-break:normal;overflow-wrap:normal;white-space:pre}code{font:inherit}.options{padding:0;margin:0;border:0;min-width:0;display:grid;gap:9px}.option{display:flex;gap:11px;align-items:flex-start;border:1px solid #e1e6e6;border-radius:10px;padding:12px 14px;cursor:pointer;position:relative;min-width:0;font-size:14px;line-height:1.7;transition:background .12s,border-color .12s}.option:hover{background:#f8faf9}.option input{position:absolute;opacity:0;width:1px;height:1px}.option:has(input:focus-visible){outline:3px solid #407cc8;outline-offset:2px}.choice-number{flex:none;border:1px solid #b6c1c4;border-radius:50%;width:23px;height:23px;display:grid;place-items:center;font-size:12px;line-height:1;margin-top:1px;color:var(--muted)}.choice-text{white-space:pre-line;min-width:0}.choice-state{margin-left:auto;flex:none;font-weight:800}.option.selected{background:#eff8f4;border-color:var(--accent)}.option.selected .choice-number{background:var(--accent);border-color:var(--accent);color:#fff}.question.graded .option{cursor:default}.option.correct-choice{background:#e9f6ef;border-color:#67a889}.option.correct-choice .choice-state{color:var(--accent)}.option.wrong-choice{background:var(--wrong-bg);border-color:#cf9388}.option.wrong-choice .choice-number{background:var(--wrong);border-color:var(--wrong);color:#fff}.option.wrong-choice .choice-state{color:var(--wrong)}.explanation{border-top:1px solid var(--line);margin-top:24px;padding-top:20px;font-size:14px;line-height:1.85}.answer-line{display:flex;justify-content:space-between;align-items:center;gap:14px}.answer-line strong{font-size:17px;color:var(--accent)}.answer-line span{font-size:12px}.topic-line{font-size:12px;color:var(--muted);margin:8px 0 12px!important}.explanation p{margin:9px 0}.takeaway{background:#edf3f2;border-radius:8px;padding:11px 13px!important;margin-top:15px!important}.takeaway strong{color:var(--accent);margin-right:7px}.sources{font-size:11px;color:var(--muted);margin-top:15px;line-height:1.9}.sources a{color:#637b7a;text-decoration:underline;text-underline-offset:3px}.result{background:#172f31;color:#fff;border-radius:var(--radius);padding:28px 30px;margin-bottom:22px;scroll-margin-top:110px}.result .eyebrow{color:#a8d6c7}.result h2{font-size:22px;margin:0}.scoreline{display:flex;align-items:baseline;gap:10px;margin:6px 0 5px}.score{font-size:56px;line-height:1.25;font-weight:800;letter-spacing:-.05em}.outof{font-size:19px;color:#aec6c2}.result-summary{font-size:14px;color:#d8e7e3}.result-note{font-size:12px;color:#b9ceca}.topic-summary{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:22px 0}.topic-stat{background:rgba(255,255,255,.07);border-radius:9px;padding:10px 8px;text-align:center;font-size:11px}.topic-stat strong{display:block;font-size:18px}.result-controls{display:flex;gap:9px;flex-wrap:wrap}.empty-note{padding:26px;background:var(--soft);border-radius:12px;margin-bottom:20px;color:var(--accent)}.bottom-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 25px;margin-bottom:30px}.bottom-actions p{font-size:13px;color:var(--muted);margin:0}.footer{max-width:1240px;margin:12px auto 40px;padding:0 24px;font-size:12px;color:var(--muted);text-align:center}.feedback{font-size:13px;padding:10px 14px;background:var(--amber-bg);border-radius:8px;margin:0 0 18px}.noselect{user-select:none}
+@media(max-width:950px){.layout{grid-template-columns:180px minmax(0,1fr);gap:16px}.sidebar{padding:16px 13px}.nav-grid{gap:5px}.question{padding:23px}.progress-track{max-width:150px}.notice{margin-inline:24px}.topic-summary{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:720px){.masthead{padding:14px 18px}.edition{font-size:10px}.hero{padding:30px 18px 24px}.hero h1{font-size:31px}.notice{margin:0 18px 20px;padding:13px 15px}.toolbar-inner{padding:11px 16px;gap:10px;flex-wrap:wrap}.progress-info{min-width:90px}.progress-info strong{font-size:15px}.progress-track{display:none}.time-box{min-width:75px}.clock{font-size:21px}.toolbar .btn{padding:8px 10px;font-size:11px}.layout{display:block;margin-top:18px;padding:0 16px}.sidebar{position:static;margin-bottom:18px;padding:16px}.sidebar h2{margin-bottom:10px}.nav-grid{grid-template-columns:repeat(8,1fr);gap:6px}.nav-item{min-height:31px;aspect-ratio:auto}.side-actions{grid-template-columns:repeat(3,1fr);gap:7px}.side-actions .btn{padding:8px 5px;font-size:11px}.legend{margin:10px 0}.save-status{margin-top:12px;padding-top:10px}.question{padding:20px 17px;border-radius:14px}.question h2{font-size:16px;line-height:1.75}.option{padding:11px 10px;gap:9px;font-size:13px}.choice-number{width:22px;height:22px}.qnumber{font-size:25px}pre{font-size:11.5px;padding:12px;line-height:1.85}.category{font-size:10px}.result{padding:24px 20px}.topic-summary{grid-template-columns:repeat(3,1fr)}.bottom-actions{padding:17px;align-items:flex-start}.bottom-actions .btn{padding:9px 12px}.answer-line{align-items:flex-start}.sources{font-size:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{@page{size:A4;margin:16mm}html{scroll-padding:0}body{background:#fff;color:#111;font-size:10pt}.masthead,.toolbar,.sidebar,.mark,.bottom-actions,.footer,.skip,.facts,.save-status,.feedback,.result-controls{display:none!important}.hero{padding:0 0 12pt;max-width:none}.hero h1{font-size:22pt;color:#111}.hero h1 span,.eyebrow{color:#111}.subtitle{font-size:9pt}.notice{margin:0 0 12pt;background:#fff;border-left:2px solid #333;padding:8pt 12pt;font-size:9pt}.notice details{display:none}.layout{display:block;padding:0;margin:0;max-width:none}.question{break-inside:avoid;box-shadow:none;border-radius:0;border:0;border-top:1px solid #aaa;padding:16pt 0;margin-bottom:8pt}.qnumber{color:#111;font-size:20pt}.question h2{font-size:11pt;line-height:1.7;margin-bottom:10pt}.category{background:none;border:1px solid #aaa;color:#111}.option{font-size:9pt;padding:5pt 7pt;line-height:1.6;border-color:#ddd;border-radius:4pt;break-inside:avoid}.choice-number{width:15pt;height:15pt;font-size:8pt}.code-label{font-size:8pt}pre{font-size:8pt;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65;padding:8pt}.codebox{margin:8pt 0}.explanation{font-size:9pt}.sources{font-size:8pt}.result{color:#111;background:#fff;border:1px solid #999}.result .eyebrow,.result-summary,.result-note,.outof{color:#333}body.print-questions .explanation,body.print-questions .result,body.print-questions .empty-note{display:none!important}body.print-questions .question[hidden]{display:block!important}body.print-questions .option{background:#fff!important;border-color:#ddd!important}body.print-questions .choice-number{background:#fff!important;color:#444!important;border-color:#999!important}body.print-questions .choice-state{display:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#q1">문제로 바로 이동</a>
+<div class="masthead"><div class="brand">FRONT / PRACTICE</div><div class="edition">SSAFY 학습용 · 비공식</div></div>
+<header class="hero">
+  <p class="eyebrow">PRACTICE SET 06 · HTML / CSS / JAVASCRIPT</p>
+  <h1>Front 과목평가<br><span>32문항 실전 모의고사</span></h1>
+  <p class="subtitle">개념을 구분하고, 코드를 읽고, 상태 변화를 추적하세요.<br>제공된 공지의 32개 토픽을 순서대로 한 문항씩 반영한 자체 제작 문제입니다.</p>
+  <div class="facts"><div class="fact"><strong>32</strong> 문항 · 4지선다</div><div class="fact"><strong>60</strong> 분 · 선택형 타이머</div><div class="fact"><strong>100</strong> 점 · 문항당 3.125점</div></div>
+</header>
+<div class="notice">
+  <p><strong>시험 안내</strong> 각 문항의 정답은 하나입니다. 답을 고른 뒤 <strong>채점하기</strong>를 누르면 점수와 모든 문항의 해설이 표시됩니다. 타이머는 시작 버튼을 눌러야 작동하며, 60분이 지나면 자동 채점됩니다.</p>
+  <details><summary>공통 가정과 풀이 환경</summary><div class="conditions">
+    각 문제는 서로 독립적입니다. 별도 설명이 없으면 필요한 DOM은 생성되어 있고, 표준 모드의 일반 브라우저에서 실행합니다. DOM은 Document Object Model(문서 객체 모델), JSON은 JavaScript Object Notation을 뜻합니다.<br>
+    CSS는 제시한 코드 외의 작성자 스타일·인라인 스타일·!important·캐스케이드 레이어·애니메이션의 영향을 받지 않습니다. 문서는 가로쓰기(writing-mode: horizontal-tb), 왼쪽에서 오른쪽(direction: ltr)입니다.<br>
+    저장소 문제는 일반 HTTP(S) 출처에서 저장소 사용이 허용된 상황입니다. 브라우저 정책·용량 제한·시크릿 모드로 인한 삭제는 별도 설명이 없으면 고려하지 않습니다. 문제의 코드는 표시용이며 이 시험 페이지에서 실행하지 않습니다.<br>
+    이 파일의 풀이·채점은 인터넷 연결 없이 작동합니다. 자동저장이 허용되지 않는 환경에서는 메모리에만 답안을 유지합니다. 참고 문서 링크를 여는 데에는 인터넷이 필요합니다.<br>
+    실제 SSAFY 기출문제나 공식 예상문제가 아닙니다. 공지 일정: 2026년 10월 12일(월) 09:00–10:00.
+  </div></details>
+</div>
+<noscript><div class="notice"><strong>JavaScript가 꺼져 있습니다.</strong> 문제는 읽을 수 있지만 자동 채점과 타이머는 사용할 수 없습니다. 브라우저에서 JavaScript를 허용해 주세요.</div></noscript>
+<div class="toolbar"><div class="toolbar-inner">
+  <div class="progress-info"><div class="small-label" id="remaining-label">미응답 32문항</div><strong id="answered">0 / 32</strong></div>
+  <div class="progress-track" id="progress-meter" role="progressbar" aria-label="응답한 문항 수" aria-valuemin="0" aria-valuemax="32" aria-valuenow="0"><div class="progress-fill" id="progress-fill"></div></div>
+  <div class="time-box"><div class="small-label" id="timer-label">타이머 대기</div><div class="clock" id="clock" role="timer" aria-live="off">60:00</div></div>
+  <button class="btn" id="start-timer" type="button">60분 타이머 시작</button>
+  <button class="btn primary" id="grade-top" type="button">채점하기</button>
+</div></div>
+<div class="layout">
+  <aside class="sidebar" aria-label="문제 탐색">
+    <h2>문제 바로가기</h2>
+    <nav class="nav-grid" aria-label="문항 번호"><a class="nav-item" href="#q1" data-nav="1" aria-label="1번 미응답">01</a><a class="nav-item" href="#q2" data-nav="2" aria-label="2번 미응답">02</a><a class="nav-item" href="#q3" data-nav="3" aria-label="3번 미응답">03</a><a class="nav-item" href="#q4" data-nav="4" aria-label="4번 미응답">04</a><a class="nav-item" href="#q5" data-nav="5" aria-label="5번 미응답">05</a><a class="nav-item" href="#q6" data-nav="6" aria-label="6번 미응답">06</a><a class="nav-item" href="#q7" data-nav="7" aria-label="7번 미응답">07</a><a class="nav-item" href="#q8" data-nav="8" aria-label="8번 미응답">08</a><a class="nav-item" href="#q9" data-nav="9" aria-label="9번 미응답">09</a><a class="nav-item" href="#q10" data-nav="10" aria-label="10번 미응답">10</a><a class="nav-item" href="#q11" data-nav="11" aria-label="11번 미응답">11</a><a class="nav-item" href="#q12" data-nav="12" aria-label="12번 미응답">12</a><a class="nav-item" href="#q13" data-nav="13" aria-label="13번 미응답">13</a><a class="nav-item" href="#q14" data-nav="14" aria-label="14번 미응답">14</a><a class="nav-item" href="#q15" data-nav="15" aria-label="15번 미응답">15</a><a class="nav-item" href="#q16" data-nav="16" aria-label="16번 미응답">16</a><a class="nav-item" href="#q17" data-nav="17" aria-label="17번 미응답">17</a><a class="nav-item" href="#q18" data-nav="18" aria-label="18번 미응답">18</a><a class="nav-item" href="#q19" data-nav="19" aria-label="19번 미응답">19</a><a class="nav-item" href="#q20" data-nav="20" aria-label="20번 미응답">20</a><a class="nav-item" href="#q21" data-nav="21" aria-label="21번 미응답">21</a><a class="nav-item" href="#q22" data-nav="22" aria-label="22번 미응답">22</a><a class="nav-item" href="#q23" data-nav="23" aria-label="23번 미응답">23</a><a class="nav-item" href="#q24" data-nav="24" aria-label="24번 미응답">24</a><a class="nav-item" href="#q25" data-nav="25" aria-label="25번 미응답">25</a><a class="nav-item" href="#q26" data-nav="26" aria-label="26번 미응답">26</a><a class="nav-item" href="#q27" data-nav="27" aria-label="27번 미응답">27</a><a class="nav-item" href="#q28" data-nav="28" aria-label="28번 미응답">28</a><a class="nav-item" href="#q29" data-nav="29" aria-label="29번 미응답">29</a><a class="nav-item" href="#q30" data-nav="30" aria-label="30번 미응답">30</a><a class="nav-item" href="#q31" data-nav="31" aria-label="31번 미응답">31</a><a class="nav-item" href="#q32" data-nav="32" aria-label="32번 미응답">32</a></nav>
+    <p class="legend">빈칸: 미응답 · 색 채움: 응답<br><span class="mark-dot">●</span> 점 표시: 다시 볼 문제</p>
+    <div class="side-actions"><button class="btn" id="first-blank" type="button">미응답 찾기</button><button class="btn" id="print" type="button">문제지만 인쇄</button><button class="btn danger" id="reset" type="button">처음부터 풀기</button></div>
+    <p class="save-status" id="save-status">자동저장 환경을 확인하고 있습니다.</p>
+  </aside>
+  <main class="contents" id="main">
+    <section class="result" id="result" hidden aria-labelledby="result-title" aria-live="polite">
+      <p class="eyebrow">YOUR RESULT</p><h2 id="result-title">채점 결과</h2>
+      <div class="scoreline"><span class="score" id="score">0</span><span class="outof">/ 100점</span></div>
+      <p class="result-summary" id="result-summary"></p><p class="result-note" id="result-note"></p>
+      <div class="topic-summary" id="topic-summary"></div>
+      <div class="result-controls"><button class="btn" id="filter-wrong" type="button" aria-pressed="false">오답·미응답만 보기</button></div>
+    </section>
+    <div class="feedback" id="feedback" role="status" hidden></div>
+    <p class="empty-note" id="empty-note" hidden>모든 문제를 맞혔습니다. 전체 문제 보기로 해설을 복습할 수 있습니다.</p>
+    <article class="question" id="q1" data-id="1" tabindex="-1">
+      <div class="question-top"><span class="qnumber">01</span><span class="category">HTML</span><span class="difficulty">난도 하</span><button type="button" class="mark" data-mark="1" aria-pressed="false" aria-label="1번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-1">HTML, CSS, JavaScript와 브라우저의 관계에 대한 설명으로 가장 적절한 것은?</h2>
+      
+      <fieldset class="options" aria-labelledby="qtitle-1"><legend class="sr-only">1번 정답 선택</legend><label class="option" id="opt-1-1"><input type="radio" name="q1" value="1" aria-label="1번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">HTML은 반드시 서버에서 기계어로 컴파일된 후 브라우저에 전달된다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-1-2"><input type="radio" name="q1" value="2" aria-label="1번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">HTML은 문서 구조와 의미를, CSS는 표현과 배치를 담당하고, JavaScript는 DOM 조작과 이벤트 처리 등을 수행할 수 있다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-1-3"><input type="radio" name="q1" value="3" aria-label="1번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">CSS는 localStorage에 데이터를 저장하며, HTML은 사용자의 클릭 이벤트를 처리하는 프로그래밍 언어이다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-1-4"><input type="radio" name="q1" value="4" aria-label="1번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">JavaScript 파일이 없으면 브라우저는 HTML 문서를 화면에 표시할 수 없다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-1" hidden><div class="answer-line"><strong>정답 2번</strong><span id="your-1"></span></div><p class="topic-line">출제 토픽 · HTML·CSS·JavaScript의 역할과 브라우저의 동작</p><p>브라우저는 HTML을 파싱해 DOM(Document Object Model, 문서 객체 모델)을 구성하고 CSS를 적용해 화면을 표현한다.</p><p>JavaScript는 DOM을 변경하거나 이벤트에 반응하는 동작을 구현할 수 있다. JavaScript가 없는 HTML 문서도 표시할 수 있다.</p><p class="takeaway"><strong>기억할 점</strong> 구조·의미는 HTML, 표현·배치는 CSS, 동작 구현은 JavaScript로 구분한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_browsers_load_websites" target="_blank" rel="noopener noreferrer">MDN · 브라우저의 웹 페이지 처리</a> · <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax" target="_blank" rel="noopener noreferrer">MDN · HTML 기본 문법</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer">MDN · CSS의 역할</a></div></div>
+    </article>
+<article class="question" id="q2" data-id="2" tabindex="-1">
+      <div class="question-top"><span class="qnumber">02</span><span class="category">DOM·이벤트</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="2" aria-pressed="false" aria-label="2번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-2">처음에는 localStorage에 count 키가 없다. 아래 페이지에서 버튼을 두 번 클릭한 직후의 「count 변수 / 화면의 숫자 / getItem(&quot;count&quot;)의 반환값」을 순서대로 고른 것은? 따옴표가 있는 값은 문자열이다.</h2>
+      <div class="codebox"><div class="code-label">HTML + JavaScript</div><pre><code>&lt;button id=&quot;add&quot;&gt;증가&lt;/button&gt;
+&lt;p id=&quot;result&quot;&gt;&lt;/p&gt;
+&lt;script&gt;
+  let count = Number(localStorage.getItem(&quot;count&quot;) ?? 0);
+  const result = document.querySelector(&quot;#result&quot;);
+  result.textContent = count;
+
+  document.querySelector(&quot;#add&quot;).addEventListener(&quot;click&quot;, () =&gt; {
+    count += 1;
+    localStorage.setItem(&quot;count&quot;, count);
+    result.textContent = count;
+  });
+&lt;/script&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-2"><legend class="sr-only">2번 정답 선택</legend><label class="option" id="opt-2-1"><input type="radio" name="q2" value="1" aria-label="2번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">2 / &quot;0&quot; / &quot;2&quot;</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-2-2"><input type="radio" name="q2" value="2" aria-label="2번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">2 / &quot;2&quot; / 2</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-2-3"><input type="radio" name="q2" value="3" aria-label="2번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">2 / &quot;2&quot; / &quot;2&quot;</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-2-4"><input type="radio" name="q2" value="4" aria-label="2번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">0 / &quot;2&quot; / &quot;2&quot;</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-2" hidden><div class="answer-line"><strong>정답 3번</strong><span id="your-2"></span></div><p class="topic-line">출제 토픽 · 변수·DOM·이벤트·localStorage의 연계</p><p>저장값이 없으므로 초기 count는 숫자 0이다. 클릭할 때마다 1씩 증가하므로 두 번 클릭하면 숫자 2가 된다.</p><p>화면은 textContent 대입으로 갱신된다. localStorage는 값을 문자열로 저장하므로 getItem(&quot;count&quot;)는 문자열 &quot;2&quot;를 반환한다.</p><p>변수·DOM·저장소가 자동으로 연결되는 것이 아니다. 이 코드가 각각을 직접 갱신하기 때문에 값이 맞춰진다.</p><p class="takeaway"><strong>기억할 점</strong> 변수 변경, 화면 갱신, 저장소 갱신은 서로 별개의 작업이다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API" target="_blank" rel="noopener noreferrer">MDN · Web Storage 사용</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem" target="_blank" rel="noopener noreferrer">MDN · Storage.getItem()</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent" target="_blank" rel="noopener noreferrer">MDN · textContent</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener noreferrer">MDN · addEventListener()</a></div></div>
+    </article>
+<article class="question" id="q3" data-id="3" tabindex="-1">
+      <div class="question-top"><span class="qnumber">03</span><span class="category">HTML</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="3" aria-pressed="false" aria-label="3번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-3">입력값을 바꾸지 않고 가입 버튼을 클릭했다. 전송되는 폼 데이터의 이름과 값으로 옳은 것은? URL의 경로는 제외한다.</h2>
+      <div class="codebox"><div class="code-label">HTML</div><pre><code>&lt;form action=&quot;/join&quot; method=&quot;get&quot;&gt;
+  &lt;input id=&quot;nickname&quot; name=&quot;userName&quot; value=&quot;jin&quot;&gt;
+  &lt;input id=&quot;age&quot; value=&quot;27&quot;&gt;
+  &lt;button type=&quot;submit&quot;&gt;가입&lt;/button&gt;
+&lt;/form&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-3"><legend class="sr-only">3번 정답 선택</legend><label class="option" id="opt-3-1"><input type="radio" name="q3" value="1" aria-label="3번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">userName=jin</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-3-2"><input type="radio" name="q3" value="2" aria-label="3번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">nickname=jin&amp;age=27</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-3-3"><input type="radio" name="q3" value="3" aria-label="3번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">userName=jin&amp;age=27</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-3-4"><input type="radio" name="q3" value="4" aria-label="3번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">nickname=jin</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-3" hidden><div class="answer-line"><strong>정답 1번</strong><span id="your-3"></span></div><p class="topic-line">출제 토픽 · HTML Form의 name 속성과 데이터 전송</p><p>첫 번째 input은 name이 userName이므로 userName=jin으로 포함된다.</p><p>두 번째 input에는 name이 없어 이 폼의 제출 데이터에 포함되지 않는다. id는 name을 대신하지 않는다.</p><p class="takeaway"><strong>기억할 점</strong> 일반적인 입력 데이터의 전송 키는 id가 아니라 name이다.</p><div class="sources">확인 문서 · <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#constructing-the-entry-list" target="_blank" rel="noopener noreferrer">WHATWG HTML · 폼 제출 데이터 구성</a></div></div>
+    </article>
+<article class="question" id="q4" data-id="4" tabindex="-1">
+      <div class="question-top"><span class="qnumber">04</span><span class="category">HTML</span><span class="difficulty">난도 하</span><button type="button" class="mark" data-mark="4" aria-pressed="false" aria-label="4번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-4">시맨틱 요소와 &lt;head&gt;, &lt;header&gt;에 대한 설명으로 옳은 것은?</h2>
+      
+      <fieldset class="options" aria-labelledby="qtitle-4"><legend class="sr-only">4번 정답 선택</legend><label class="option" id="opt-4-1"><input type="radio" name="q4" value="1" aria-label="4번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">&lt;head&gt;는 화면 맨 위에 표시되는 제목 영역을 만드는 요소이다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-4-2"><input type="radio" name="q4" value="2" aria-label="4번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">&lt;header&gt;는 한 HTML 문서에 반드시 한 번만 사용할 수 있다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-4-3"><input type="radio" name="q4" value="3" aria-label="4번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">&lt;head&gt;와 &lt;header&gt;는 의미가 같으며 기본 글자 크기만 다르다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-4-4"><input type="radio" name="q4" value="4" aria-label="4번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">&lt;head&gt;는 문서의 메타데이터를 담고, &lt;header&gt;는 페이지나 특정 영역의 소개·탐색 내용을 나타낼 수 있다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-4" hidden><div class="answer-line"><strong>정답 4번</strong><span id="your-4"></span></div><p class="topic-line">출제 토픽 · 시맨틱 태그와 head·header의 구분</p><p>head에는 title, meta, link 등 문서 정보를 담는 요소를 배치한다. 본문의 소개 영역을 뜻하는 header와는 목적이 다르다.</p><p>header는 문서 전체 또는 허용되는 개별 영역의 도입부를 나타낼 수 있다. 시맨틱 요소를 썼다고 화면 상단에 고정되는 것은 아니다.</p><p class="takeaway"><strong>기억할 점</strong> head는 문서 정보, header는 본문 영역의 의미를 나타낸다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Webpage_metadata" target="_blank" rel="noopener noreferrer">MDN · head와 메타데이터</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/header" target="_blank" rel="noopener noreferrer">MDN · header 요소</a></div></div>
+    </article>
+<article class="question" id="q5" data-id="5" tabindex="-1">
+      <div class="question-top"><span class="qnumber">05</span><span class="category">HTML</span><span class="difficulty">난도 하</span><button type="button" class="mark" data-mark="5" aria-pressed="false" aria-label="5번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-5">다음 HTML 요소의 구성에 대한 설명으로 옳은 것은?</h2>
+      <div class="codebox"><div class="code-label">HTML</div><pre><code>&lt;a href=&quot;/posts&quot; class=&quot;menu&quot;&gt;게시글&lt;/a&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-5"><legend class="sr-only">5번 정답 선택</legend><label class="option" id="opt-5-1"><input type="radio" name="q5" value="1" aria-label="5번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">태그 이름은 href이고, 속성은 a이며, 내용은 /posts이다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-5-2"><input type="radio" name="q5" value="2" aria-label="5번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">태그 이름은 a이고, 속성은 게시글이며, 내용은 menu이다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-5-3"><input type="radio" name="q5" value="3" aria-label="5번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">태그 이름은 a이고, href와 class는 속성이며, 게시글은 요소의 내용이다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-5-4"><input type="radio" name="q5" value="4" aria-label="5번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">태그 이름은 menu이고, /posts는 닫는 태그이다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-5" hidden><div class="answer-line"><strong>정답 3번</strong><span id="your-5"></span></div><p class="topic-line">출제 토픽 · HTML 요소의 태그·속성·내용</p><p>&lt;a ...&gt;는 시작 태그, &lt;/a&gt;는 종료 태그이다. href와 class는 속성 이름이고 /posts와 menu는 각각의 속성값이다.</p><p>시작 태그와 종료 태그 사이의 게시글은 이 요소의 텍스트 내용이다.</p><p class="takeaway"><strong>기억할 점</strong> 태그 이름, 속성 이름, 속성값, 요소 내용을 서로 구분한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax" target="_blank" rel="noopener noreferrer">MDN · HTML 기본 문법</a></div></div>
+    </article>
+<article class="question" id="q6" data-id="6" tabindex="-1">
+      <div class="question-top"><span class="qnumber">06</span><span class="category">CSS</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="6" aria-pressed="false" aria-label="6번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-6">아래 코드에서 공지 글자의 최종 색상은?</h2>
+      <div class="codebox"><div class="code-label">HTML + CSS</div><pre><code>&lt;style&gt;
+  #title  { color: red; }
+  .notice { color: blue; }
+  #title  { color: green; }
+  p       { color: black; }
+&lt;/style&gt;
+&lt;p id=&quot;title&quot; class=&quot;notice&quot;&gt;공지&lt;/p&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-6"><legend class="sr-only">6번 정답 선택</legend><label class="option" id="opt-6-1"><input type="radio" name="q6" value="1" aria-label="6번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">red</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-6-2"><input type="radio" name="q6" value="2" aria-label="6번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">green</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-6-3"><input type="radio" name="q6" value="3" aria-label="6번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">blue</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-6-4"><input type="radio" name="q6" value="4" aria-label="6번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">black</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-6" hidden><div class="answer-line"><strong>정답 2번</strong><span id="your-6"></span></div><p class="topic-line">출제 토픽 · CSS 선택자의 우선순위와 선언 순서</p><p>이 조건에서는 ID 선택자 #title이 클래스 선택자 .notice 및 타입 선택자 p보다 명시도가 높다.</p><p>두 #title 규칙의 명시도는 같다. 따라서 뒤에 선언된 color: green이 적용된다. 마지막 줄이라는 이유만으로 p 규칙이 이기지는 않는다.</p><p class="takeaway"><strong>기억할 점</strong> 동일한 캐스케이드 조건에서는 명시도를 먼저 비교하고, 같으면 뒤의 선언을 적용한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity" target="_blank" rel="noopener noreferrer">MDN · 선택자 명시도</a></div></div>
+    </article>
+<article class="question" id="q7" data-id="7" tabindex="-1">
+      <div class="question-top"><span class="qnumber">07</span><span class="category">CSS</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="7" aria-pressed="false" aria-label="7번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-7">.child의 계산된 font-size, padding-left, width 값을 순서대로 고른 것은? 전체 박스 너비가 아니라 각 속성의 값을 묻는다.</h2>
+      <div class="codebox"><div class="code-label">HTML + CSS</div><pre><code>&lt;style&gt;
+  html    { font-size: 16px; }
+  .parent { font-size: 20px; }
+  .child  {
+    font-size: 1.5em;
+    padding: 1em;
+    width: 10rem;
+  }
+&lt;/style&gt;
+&lt;div class=&quot;parent&quot;&gt;&lt;div class=&quot;child&quot;&gt;내용&lt;/div&gt;&lt;/div&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-7"><legend class="sr-only">7번 정답 선택</legend><label class="option" id="opt-7-1"><input type="radio" name="q7" value="1" aria-label="7번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">24px / 24px / 160px</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-7-2"><input type="radio" name="q7" value="2" aria-label="7번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">30px / 20px / 200px</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-7-3"><input type="radio" name="q7" value="3" aria-label="7번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">30px / 20px / 160px</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-7-4"><input type="radio" name="q7" value="4" aria-label="7번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">30px / 30px / 160px</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-7" hidden><div class="answer-line"><strong>정답 4번</strong><span id="your-7"></span></div><p class="topic-line">출제 토픽 · CSS 단위 px·em·rem</p><p>font-size에 사용한 em은 상속받을 글꼴 크기를 기준으로 계산한다. 따라서 20 × 1.5 = 30px이다.</p><p>padding의 em은 해당 요소 자신의 계산된 font-size를 기준으로 하므로 30px이다.</p><p>rem은 루트 요소의 font-size를 기준으로 하므로 width는 16 × 10 = 160px이다. px는 CSS 픽셀 단위이며 기기 픽셀과 항상 1:1인 것은 아니다.</p><p class="takeaway"><strong>기억할 점</strong> font-size의 em 기준과 padding의 em 기준을 혼동하지 않는다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length" target="_blank" rel="noopener noreferrer">MDN · CSS 길이 단위</a></div></div>
+    </article>
+<article class="question" id="q8" data-id="8" tabindex="-1">
+      <div class="question-top"><span class="qnumber">08</span><span class="category">CSS</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="8" aria-pressed="false" aria-label="8번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-8">각각 class=&quot;box a&quot;와 class=&quot;box b&quot;를 가진 일반적인 블록 요소의 테두리까지 포함한 가로 크기는 얼마인가? margin은 제외하고, 크기를 바꾸는 다른 제약은 없다.</h2>
+      <div class="codebox"><div class="code-label">CSS</div><pre><code>.box {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid;
+  margin: 10px;
+}
+.a { box-sizing: content-box; }
+.b { box-sizing: border-box; }</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-8"><legend class="sr-only">8번 정답 선택</legend><label class="option" id="opt-8-1"><input type="radio" name="q8" value="1" aria-label="8번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">.a: 250px / .b: 200px</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-8-2"><input type="radio" name="q8" value="2" aria-label="8번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">.a: 200px / .b: 250px</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-8-3"><input type="radio" name="q8" value="3" aria-label="8번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">.a: 270px / .b: 220px</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-8-4"><input type="radio" name="q8" value="4" aria-label="8번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">.a: 240px / .b: 200px</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-8" hidden><div class="answer-line"><strong>정답 1번</strong><span id="your-8"></span></div><p class="topic-line">출제 토픽 · Box Model과 box-sizing</p><p>content-box의 width는 콘텐츠 영역의 너비이다. .a는 200 + 20×2 + 5×2 = 250px이다.</p><p>border-box의 width는 padding과 border를 포함한다. .b는 200px이며 콘텐츠 영역은 150px이다.</p><p>margin은 border-box에도 포함되지 않는다. 문제에서는 margin을 제외하도록 명시했다.</p><p class="takeaway"><strong>기억할 점</strong> content-box는 바깥으로 더하고, border-box는 지정 너비 안에 padding·border를 포함한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/box-sizing" target="_blank" rel="noopener noreferrer">MDN · box-sizing</a></div></div>
+    </article>
+<article class="question" id="q9" data-id="9" tabindex="-1">
+      <div class="question-top"><span class="qnumber">09</span><span class="category">DOM·이벤트</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="9" aria-pressed="false" aria-label="9번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-9">아래 코드 실행 결과와 화면 상태를 올바르게 설명한 것은?</h2>
+      <div class="codebox"><div class="code-label">HTML + JavaScript</div><pre><code>&lt;p id=&quot;message&quot; style=&quot;display: none&quot;&gt;준비&lt;/p&gt;
+&lt;script&gt;
+  const message = document.querySelector(&quot;#message&quot;);
+  message.textContent = &quot;완료&quot;;
+  console.log(message === null, message.textContent);
+&lt;/script&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-9"><legend class="sr-only">9번 정답 선택</legend><label class="option" id="opt-9-1"><input type="radio" name="q9" value="1" aria-label="9번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">요소가 DOM에서 삭제되므로 message는 null이고 대입 과정에서 오류가 발생한다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-9-2"><input type="radio" name="q9" value="2" aria-label="9번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">false와 &quot;완료&quot;가 출력되고, textContent 변경으로 요소가 자동으로 다시 보인다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-9-3"><input type="radio" name="q9" value="3" aria-label="9번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">false와 &quot;준비&quot;가 출력된다. 숨긴 요소의 텍스트는 변경할 수 없다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-9-4"><input type="radio" name="q9" value="4" aria-label="9번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">false와 &quot;완료&quot;가 출력된다. 요소는 DOM에 있지만 화면에 표시되지 않고 레이아웃 공간도 차지하지 않는다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-9" hidden><div class="answer-line"><strong>정답 4번</strong><span id="your-9"></span></div><p class="topic-line">출제 토픽 · display: none과 DOM의 관계</p><p>display: none은 요소를 DOM에서 제거하는 명령이 아니다. 따라서 querySelector로 찾고 textContent를 변경할 수 있다.</p><p>요소와 하위 트리는 화면에 표시되는 박스를 만들지 않는다. 텍스트 변경만으로 display 값이 바뀌지 않으므로 계속 숨겨져 있다.</p><p class="takeaway"><strong>기억할 점</strong> 화면에 보이는지와 DOM에 존재하는지는 별개이다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/display" target="_blank" rel="noopener noreferrer">MDN · display</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent" target="_blank" rel="noopener noreferrer">MDN · textContent</a></div></div>
+    </article>
+<article class="question" id="q10" data-id="10" tabindex="-1">
+      <div class="question-top"><span class="qnumber">10</span><span class="category">CSS</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="10" aria-pressed="false" aria-label="10번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-10">.badge의 top과 left가 기준으로 삼는 요소는? 아래 스타일 외에 transform, contain 등 기준 블록을 형성하는 다른 설정은 없다.</h2>
+      <div class="codebox"><div class="code-label">HTML + CSS</div><pre><code>&lt;style&gt;
+  .outer { position: relative; }
+  .inner { position: static; }
+  .badge {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+  }
+&lt;/style&gt;
+&lt;div class=&quot;outer&quot;&gt;
+  &lt;div class=&quot;inner&quot;&gt;&lt;span class=&quot;badge&quot;&gt;A&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-10"><legend class="sr-only">10번 정답 선택</legend><label class="option" id="opt-10-1"><input type="radio" name="q10" value="1" aria-label="10번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">항상 브라우저의 뷰포트</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-10-2"><input type="radio" name="q10" value="2" aria-label="10번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">가장 가까운 부모인 .inner</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-10-3"><input type="radio" name="q10" value="3" aria-label="10번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">.outer의 패딩 박스</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-10-4"><input type="radio" name="q10" value="4" aria-label="10번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">항상 body의 콘텐츠 박스</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-10" hidden><div class="answer-line"><strong>정답 3번</strong><span id="your-10"></span></div><p class="topic-line">출제 토픽 · position과 absolute의 위치 기준</p><p>이 코드에서는 position이 static이 아닌 가장 가까운 조상 .outer가 기준 블록(containing block)을 만든다. 기준은 그 패딩 박스이다.</p><p>.inner는 더 가깝지만 position: static이므로 이 조건에서는 기준이 되지 않는다.</p><p>일반화할 때는 주의해야 한다. transform 등의 다른 속성으로도 absolute 요소의 기준 블록이 만들어질 수 있다.</p><p class="takeaway"><strong>기억할 점</strong> 무조건 부모가 아니라, 실제로 기준 블록을 형성하는 조상을 찾는다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Display/Containing_block" target="_blank" rel="noopener noreferrer">MDN · 위치 지정의 기준 블록</a></div></div>
+    </article>
+<article class="question" id="q11" data-id="11" tabindex="-1">
+      <div class="question-top"><span class="qnumber">11</span><span class="category">CSS</span><span class="difficulty">난도 하</span><button type="button" class="mark" data-mark="11" aria-pressed="false" aria-label="11번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-11">CSS의 역할에 대한 설명으로 가장 적절한 것은?</h2>
+      
+      <fieldset class="options" aria-labelledby="qtitle-11"><legend class="sr-only">11번 정답 선택</legend><label class="option" id="opt-11-1"><input type="radio" name="q11" value="1" aria-label="11번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">CSS의 name 속성으로 서버에 전송할 폼 데이터의 키를 지정한다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-11-2"><input type="radio" name="q11" value="2" aria-label="11번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">같은 HTML 구조라도 CSS를 바꾸어 색상, 글꼴, 여백, 요소 배치 등을 다르게 표현할 수 있다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-11-3"><input type="radio" name="q11" value="3" aria-label="11번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">CSS가 배열을 순회해 합계를 계산하고 그 값을 localStorage에 저장한다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-11-4"><input type="radio" name="q11" value="4" aria-label="11번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">CSS를 사용하려면 모든 HTML 요소를 JavaScript로 먼저 생성해야 한다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-11" hidden><div class="answer-line"><strong>정답 2번</strong><span id="your-11"></span></div><p class="topic-line">출제 토픽 · CSS의 역할과 표현·배치</p><p>CSS는 문서의 표현과 배치를 기술하는 스타일 시트 언어이다. 문서의 구조를 유지하면서도 시각적인 모습을 바꿀 수 있다.</p><p>폼의 name은 HTML 속성이다. 배열 집계나 Web Storage API 호출은 이 범위에서 JavaScript의 역할이다.</p><p class="takeaway"><strong>기억할 점</strong> 표현·배치와 데이터 처리·저장을 구분한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer">MDN · CSS의 역할</a></div></div>
+    </article>
+<article class="question" id="q12" data-id="12" tabindex="-1">
+      <div class="question-top"><span class="qnumber">12</span><span class="category">CSS</span><span class="difficulty">난도 상</span><button type="button" class="mark" data-mark="12" aria-pressed="false" aria-label="12번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-12">아래 HTML에서 네 선택자가 선택하는 요소를 모두 올바르게 나열한 것은? A~D는 각 p의 텍스트를 뜻한다.</h2>
+      <div class="codebox"><div class="code-label">HTML + CSS</div><pre><code>&lt;div id=&quot;wrap&quot;&gt;
+  &lt;p id=&quot;a&quot;&gt;A&lt;/p&gt;
+  &lt;section&gt;&lt;p id=&quot;b&quot;&gt;B&lt;/p&gt;&lt;/section&gt;
+  &lt;p id=&quot;c&quot;&gt;C&lt;/p&gt;
+  &lt;p id=&quot;d&quot;&gt;D&lt;/p&gt;
+&lt;/div&gt;
+
+/* 비교할 선택자 */
+#wrap &gt; p
+#wrap p
+#a + p
+#a ~ p</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-12"><legend class="sr-only">12번 정답 선택</legend><label class="option" id="opt-12-1"><input type="radio" name="q12" value="1" aria-label="12번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">#wrap &gt; p: A,C,D / #wrap p: A,B,C,D
+#a + p: 없음 / #a ~ p: C,D</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-12-2"><input type="radio" name="q12" value="2" aria-label="12번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">#wrap &gt; p: A,B,C,D / #wrap p: A,C,D
+#a + p: C / #a ~ p: C,D</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-12-3"><input type="radio" name="q12" value="3" aria-label="12번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">#wrap &gt; p: A,C,D / #wrap p: A,B,C,D
+#a + p: C / #a ~ p: B,C,D</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-12-4"><input type="radio" name="q12" value="4" aria-label="12번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">#wrap &gt; p: A / #wrap p: A,B,C,D
+#a + p: B / #a ~ p: C,D</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-12" hidden><div class="answer-line"><strong>정답 1번</strong><span id="your-12"></span></div><p class="topic-line">출제 토픽 · CSS 선택자와 자식·후손·형제 결합자</p><p>&gt;는 직접 자식만, 공백은 모든 깊이의 후손을 대상으로 한다. 따라서 #wrap &gt; p는 A·C·D, #wrap p는 A·B·C·D이다.</p><p>+는 바로 다음 형제 요소를 요구한다. A 바로 다음 형제는 section이므로 #a + p에는 일치하는 요소가 없다.</p><p>~는 같은 부모 아래에서 뒤에 나오는 형제를 대상으로 하므로 C·D가 해당한다. B는 section의 자식이므로 A의 형제가 아니다.</p><p class="takeaway"><strong>기억할 점</strong> 후손은 깊이를 내려가지만, 형제 결합자는 같은 부모 아래에서만 찾는다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Child_combinator" target="_blank" rel="noopener noreferrer">MDN · 자식 결합자</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Next-sibling_combinator" target="_blank" rel="noopener noreferrer">MDN · 인접 형제 결합자</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Subsequent-sibling_combinator" target="_blank" rel="noopener noreferrer">MDN · 일반 형제 결합자</a></div></div>
+    </article>
+<article class="question" id="q13" data-id="13" tabindex="-1">
+      <div class="question-top"><span class="qnumber">13</span><span class="category">JavaScript</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="13" aria-pressed="false" aria-label="13번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-13">다음 코드의 출력 결과는?</h2>
+      <div class="codebox"><div class="code-label">JavaScript</div><pre><code>const students = [
+  { city: &quot;Seoul&quot;, score: 80 },
+  { city: &quot;Seoul&quot;, score: 60 },
+  { city: &quot;Busan&quot;, score: 90 },
+  { city: &quot;Seoul&quot;, score: 95 }
+];
+let count = 0;
+let total = 0;
+for (const student of students) {
+  if (student.city === &quot;Seoul&quot; &amp;&amp; student.score &gt;= 80) {
+    count++;
+    total += student.score;
+  }
+}
+console.log(count, total);</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-13"><legend class="sr-only">13번 정답 선택</legend><label class="option" id="opt-13-1"><input type="radio" name="q13" value="1" aria-label="13번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">3 235</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-13-2"><input type="radio" name="q13" value="2" aria-label="13번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">3 265</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-13-3"><input type="radio" name="q13" value="3" aria-label="13번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">2 175</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-13-4"><input type="radio" name="q13" value="4" aria-label="13번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">2 155</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-13" hidden><div class="answer-line"><strong>정답 3번</strong><span id="your-13"></span></div><p class="topic-line">출제 토픽 · 배열·객체와 반복문을 이용한 조건별 집계</p><p>두 조건을 모두 만족하는 객체는 Seoul·80점과 Seoul·95점이다.</p><p>Seoul·60점은 점수 조건을, Busan·90점은 도시 조건을 만족하지 못한다. 따라서 count는 2, total은 175이다.</p><p class="takeaway"><strong>기억할 점</strong> &amp;&amp; 조건을 통과하는 항목만 골라 개수와 합계를 따로 추적한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration" target="_blank" rel="noopener noreferrer">MDN · 반복문</a></div></div>
+    </article>
+<article class="question" id="q14" data-id="14" tabindex="-1">
+      <div class="question-top"><span class="qnumber">14</span><span class="category">JavaScript</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="14" aria-pressed="false" aria-label="14번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-14">다음 코드의 출력 결과는?</h2>
+      <div class="codebox"><div class="code-label">JavaScript</div><pre><code>function addBonus(score, bonus = 10) {
+  score += bonus;
+  return score;
+}
+let score = 70;
+const updated = addBonus(score, 20);
+console.log(score, updated, addBonus(50));</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-14"><legend class="sr-only">14번 정답 선택</legend><label class="option" id="opt-14-1"><input type="radio" name="q14" value="1" aria-label="14번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">90 90 60</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-14-2"><input type="radio" name="q14" value="2" aria-label="14번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">70 80 60</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-14-3"><input type="radio" name="q14" value="3" aria-label="14번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">70 90 undefined</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-14-4"><input type="radio" name="q14" value="4" aria-label="14번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">70 90 60</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-14" hidden><div class="answer-line"><strong>정답 4번</strong><span id="your-14"></span></div><p class="topic-line">출제 토픽 · 함수의 매개변수와 반환값</p><p>첫 호출의 지역 매개변수 score는 70에서 90으로 바뀌고 90을 반환한다. 바깥의 숫자 변수 score는 70으로 유지된다.</p><p>updated에는 반환값 90이 들어간다. addBonus(50)은 bonus 인수를 생략했으므로 기본값 10을 사용해 60을 반환한다.</p><p class="takeaway"><strong>기억할 점</strong> 함수 내부 매개변수, 바깥 변수, 함수 반환값을 구분한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions" target="_blank" rel="noopener noreferrer">MDN · 함수와 매개변수</a></div></div>
+    </article>
+<article class="question" id="q15" data-id="15" tabindex="-1">
+      <div class="question-top"><span class="qnumber">15</span><span class="category">JavaScript</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="15" aria-pressed="false" aria-label="15번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-15">다음 코드의 결과와 const의 의미를 올바르게 설명한 것은?</h2>
+      <div class="codebox"><div class="code-label">JavaScript</div><pre><code>const user = { name: &quot;Jin&quot;, score: 80 };
+const alias = user;
+alias.score = 95;
+console.log(user.score, user === alias);</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-15"><legend class="sr-only">15번 정답 선택</legend><label class="option" id="opt-15-1"><input type="radio" name="q15" value="1" aria-label="15번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">95 true가 출력된다. user와 alias는 같은 객체를 가리키며, const는 변수 재할당을 제한하지만 객체 속성 변경까지 막지는 않는다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-15-2"><input type="radio" name="q15" value="2" aria-label="15번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">80 false가 출력된다. alias에 대입할 때 객체가 자동으로 복제된다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-15-3"><input type="radio" name="q15" value="3" aria-label="15번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">alias가 const이므로 alias.score를 변경하는 줄에서 오류가 발생한다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-15-4"><input type="radio" name="q15" value="4" aria-label="15번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">95 false가 출력된다. 같은 속성값을 가진 객체라도 변수 이름이 다르면 반드시 다른 객체이다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-15" hidden><div class="answer-line"><strong>정답 1번</strong><span id="your-15"></span></div><p class="topic-line">출제 토픽 · 객체 참조와 const의 의미</p><p>alias = user는 새 객체를 만드는 코드가 아니다. 두 변수는 동일한 객체를 참조하므로 alias.score를 바꾸면 user.score로도 95가 보인다.</p><p>const는 그 변수에 다른 값을 재할당하는 것을 금지한다. 일반 객체의 속성 변경까지 동결하지는 않는다.</p><p class="takeaway"><strong>기억할 점</strong> 참조 공유와 객체 복사를 구분하고, const를 객체 불변과 혼동하지 않는다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const" target="_blank" rel="noopener noreferrer">MDN · const</a></div></div>
+    </article>
+<article class="question" id="q16" data-id="16" tabindex="-1">
+      <div class="question-top"><span class="qnumber">16</span><span class="category">DOM·이벤트</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="16" aria-pressed="false" aria-label="16번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-16">다음 코드의 출력 결과와 DOM 상태로 옳은 것은?</h2>
+      <div class="codebox"><div class="code-label">HTML + JavaScript</div><pre><code>&lt;p id=&quot;a&quot;&gt;&lt;/p&gt;
+&lt;p id=&quot;b&quot;&gt;&lt;/p&gt;
+&lt;script&gt;
+  const a = document.querySelector(&quot;#a&quot;);
+  const b = document.querySelector(&quot;#b&quot;);
+  a.textContent = &quot;&lt;strong&gt;완료&lt;/strong&gt;&quot;;
+  b.innerHTML = &quot;&lt;strong&gt;완료&lt;/strong&gt;&quot;;
+  console.log(a.children.length, b.children.length);
+&lt;/script&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-16"><legend class="sr-only">16번 정답 선택</legend><label class="option" id="opt-16-1"><input type="radio" name="q16" value="1" aria-label="16번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">1 1 / 두 요소 모두 strong 자식 요소가 생긴다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-16-2"><input type="radio" name="q16" value="2" aria-label="16번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">0 1 / a에는 태그 모양의 문자열이, b에는 실제 strong 자식 요소가 들어간다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-16-3"><input type="radio" name="q16" value="3" aria-label="16번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">0 0 / 두 속성 모두 문자열을 HTML로 해석하지 않는다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-16-4"><input type="radio" name="q16" value="4" aria-label="16번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">1 0 / textContent만 문자열을 HTML로 해석한다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-16" hidden><div class="answer-line"><strong>정답 2번</strong><span id="your-16"></span></div><p class="topic-line">출제 토픽 · DOM의 텍스트 변경과 HTML 해석</p><p>a.textContent는 문자열을 텍스트로 넣는다. a에는 텍스트 노드가 있지만 자식 요소는 없어 children.length가 0이다.</p><p>b.innerHTML은 문자열을 HTML로 파싱하므로 strong 요소가 생성되고 children.length는 1이다.</p><p>외부에서 받은 신뢰할 수 없는 문자열을 innerHTML에 그대로 넣으면 보안 문제가 생길 수 있다. 단순 텍스트 표시는 textContent를 사용할 수 있다.</p><p class="takeaway"><strong>기억할 점</strong> children은 텍스트 노드가 아니라 자식 요소를 센다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent" target="_blank" rel="noopener noreferrer">MDN · textContent</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML" target="_blank" rel="noopener noreferrer">MDN · innerHTML</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/children" target="_blank" rel="noopener noreferrer">MDN · children</a></div></div>
+    </article>
+<article class="question" id="q17" data-id="17" tabindex="-1">
+      <div class="question-top"><span class="qnumber">17</span><span class="category">JavaScript</span><span class="difficulty">난도 상</span><button type="button" class="mark" data-mark="17" aria-pressed="false" aria-label="17번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-17">다음 코드의 출력 결과를 순서대로 고른 것은?</h2>
+      <div class="codebox"><div class="code-label">JavaScript</div><pre><code>function calc(mode) {
+  let sum = 0;
+  for (let i = 1; i &lt;= 5; i++) {
+    if (i === 3) {
+      if (mode === &quot;continue&quot;) continue;
+      if (mode === &quot;break&quot;) break;
+      if (mode === &quot;return&quot;) return sum;
+    }
+    sum += i;
+  }
+  return sum + 10;
+}
+console.log(calc(&quot;continue&quot;), calc(&quot;break&quot;), calc(&quot;return&quot;));</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-17"><legend class="sr-only">17번 정답 선택</legend><label class="option" id="opt-17-1"><input type="radio" name="q17" value="1" aria-label="17번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">12 3 3</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-17-2"><input type="radio" name="q17" value="2" aria-label="17번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">22 13 3</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-17-3"><input type="radio" name="q17" value="3" aria-label="17번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">22 3 13</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-17-4"><input type="radio" name="q17" value="4" aria-label="17번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">25 13 13</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-17" hidden><div class="answer-line"><strong>정답 2번</strong><span id="your-17"></span></div><p class="topic-line">출제 토픽 · 반복문에서 return·break·continue의 차이</p><p>continue는 i=3일 때 현재 반복의 나머지만 건너뛴다. 1+2+4+5=12를 만든 뒤 함수 끝에서 10을 더해 22를 반환한다.</p><p>break는 합계가 3일 때 반복문을 끝내지만 함수는 계속된다. 따라서 마지막 return으로 13을 반환한다.</p><p>return은 합계가 3일 때 함수 자체를 종료한다. 함수 끝의 +10은 실행되지 않아 3을 반환한다.</p><p class="takeaway"><strong>기억할 점</strong> continue는 이번 반복, break는 반복문, return은 함수를 종료한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration" target="_blank" rel="noopener noreferrer">MDN · 반복문</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return" target="_blank" rel="noopener noreferrer">MDN · return</a></div></div>
+    </article>
+<article class="question" id="q18" data-id="18" tabindex="-1">
+      <div class="question-top"><span class="qnumber">18</span><span class="category">DOM·이벤트</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="18" aria-pressed="false" aria-label="18번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-18">등록 시에는 count가 증가하지 않고, 버튼을 클릭할 때마다 handleClick이 실행되게 하려 한다. 빈칸에 들어갈 것으로 옳은 것은? button은 이미 조회한 버튼 요소이다.</h2>
+      <div class="codebox"><div class="code-label">JavaScript</div><pre><code>let count = 0;
+function handleClick() {
+  count += 1;
+}
+button.addEventListener(&quot;click&quot;, /* 빈칸 */);</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-18"><legend class="sr-only">18번 정답 선택</legend><label class="option" id="opt-18-1"><input type="radio" name="q18" value="1" aria-label="18번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">handleClick()</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-18-2"><input type="radio" name="q18" value="2" aria-label="18번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">handleClick(1)</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-18-3"><input type="radio" name="q18" value="3" aria-label="18번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">() =&gt; handleClick</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-18-4"><input type="radio" name="q18" value="4" aria-label="18번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">handleClick</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-18" hidden><div class="answer-line"><strong>정답 4번</strong><span id="your-18"></span></div><p class="topic-line">출제 토픽 · 이벤트 리스너 등록과 함수 전달</p><p>handleClick은 함수 자체를 전달하므로 클릭 이벤트가 발생할 때 리스너로 호출된다.</p><p>handleClick()이나 handleClick(1)은 등록 코드를 평가하는 즉시 함수를 실행한다. 그 반환값은 이 코드에서 undefined이다.</p><p>() =&gt; handleClick은 클릭 시 handleClick 함수를 반환할 뿐 실행하지 않는다. () =&gt; handleClick()이라면 실행하는 리스너가 된다.</p><p class="takeaway"><strong>기억할 점</strong> 함수 전달 handleClick과 즉시 호출 handleClick()을 구분한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener noreferrer">MDN · addEventListener()</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions" target="_blank" rel="noopener noreferrer">MDN · 함수와 매개변수</a></div></div>
+    </article>
+<article class="question" id="q19" data-id="19" tabindex="-1">
+      <div class="question-top"><span class="qnumber">19</span><span class="category">저장소</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="19" aria-pressed="false" aria-label="19번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-19">https://study.example.com:443/a 페이지에서 아래 코드를 실행했다. getItem의 반환값과 같은 localStorage 영역을 사용하는 주소를 올바르게 짝지은 것은? 같은 브라우저 프로필이며 저장소 차단은 없다.</h2>
+      <div class="codebox"><div class="code-label">JavaScript</div><pre><code>localStorage.setItem(&quot;score&quot;, 80);
+const saved = localStorage.getItem(&quot;score&quot;);</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-19"><legend class="sr-only">19번 정답 선택</legend><label class="option" id="opt-19-1"><input type="radio" name="q19" value="1" aria-label="19번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">문자열 &quot;80&quot; / https://study.example.com/b</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-19-2"><input type="radio" name="q19" value="2" aria-label="19번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">숫자 80 / https://study.example.com/b</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-19-3"><input type="radio" name="q19" value="3" aria-label="19번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">문자열 &quot;80&quot; / http://study.example.com/a</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-19-4"><input type="radio" name="q19" value="4" aria-label="19번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">문자열 &quot;80&quot; / https://study.example.com:444/a</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-19" hidden><div class="answer-line"><strong>정답 1번</strong><span id="your-19"></span></div><p class="topic-line">출제 토픽 · localStorage의 저장 방식과 출처</p><p>localStorage는 키와 값을 문자열로 저장하므로 saved는 숫자 80이 아니라 문자열 &quot;80&quot;이다.</p><p>출처(origin)는 스킴·호스트·포트로 구분한다. HTTPS의 기본 포트 443을 생략한 주소는 같은 출처이고, 경로 /a와 /b의 차이는 출처를 바꾸지 않는다.</p><p>HTTP로 바꾸거나 포트를 444로 바꾸면 다른 출처가 된다.</p><p class="takeaway"><strong>기억할 점</strong> 저장값은 문자열이고, 저장소 구분은 경로가 아니라 출처를 기준으로 한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank" rel="noopener noreferrer">MDN · localStorage</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Same-origin_policy" target="_blank" rel="noopener noreferrer">MDN · 동일 출처</a></div></div>
+    </article>
+<article class="question" id="q20" data-id="20" tabindex="-1">
+      <div class="question-top"><span class="qnumber">20</span><span class="category">저장소</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="20" aria-pressed="false" aria-label="20번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-20">다음 코드의 출력 결과는?</h2>
+      <div class="codebox"><div class="code-label">JavaScript</div><pre><code>const original = { name: &quot;Jin&quot;, score: 80 };
+localStorage.setItem(&quot;user&quot;, JSON.stringify(original));
+const restored = JSON.parse(localStorage.getItem(&quot;user&quot;));
+restored.score = 100;
+console.log(original.score, restored.score, original === restored);</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-20"><legend class="sr-only">20번 정답 선택</legend><label class="option" id="opt-20-1"><input type="radio" name="q20" value="1" aria-label="20번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">100 100 true</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-20-2"><input type="radio" name="q20" value="2" aria-label="20번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">80 100 true</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-20-3"><input type="radio" name="q20" value="3" aria-label="20번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">80 100 false</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-20-4"><input type="radio" name="q20" value="4" aria-label="20번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">80 80 false</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-20" hidden><div class="answer-line"><strong>정답 3번</strong><span id="your-20"></span></div><p class="topic-line">출제 토픽 · JSON을 이용한 객체 저장과 복원</p><p>JSON.stringify는 이 객체를 JSON 문자열로 만들고, JSON.parse는 그 문자열에서 새 객체를 만든다.</p><p>original과 restored는 다른 객체이므로 restored.score를 변경해도 original.score는 80이다. 두 객체의 참조 비교 결과도 false이다.</p><p>restored를 변경한 것만으로 이미 저장된 JSON 문자열이 수정되지는 않는다. 저장값을 갱신하려면 다시 setItem을 호출해야 한다.</p><p class="takeaway"><strong>기억할 점</strong> JSON 복원은 원래 객체의 참조를 되살리는 것이 아니다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="noopener noreferrer">MDN · JSON</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API" target="_blank" rel="noopener noreferrer">MDN · Web Storage 사용</a></div></div>
+    </article>
+<article class="question" id="q21" data-id="21" tabindex="-1">
+      <div class="question-top"><span class="qnumber">21</span><span class="category">JavaScript</span><span class="difficulty">난도 하</span><button type="button" class="mark" data-mark="21" aria-pressed="false" aria-label="21번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-21">다음 코드에 대한 설명으로 옳은 것은?</h2>
+      <div class="codebox"><div class="code-label">JavaScript</div><pre><code>let total;
+total = 10;
+total += 5;
+console.log(total);</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-21"><legend class="sr-only">21번 정답 선택</legend><label class="option" id="opt-21-1"><input type="radio" name="q21" value="1" aria-label="21번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">let은 선언과 동시에 반드시 초기값을 지정해야 하므로 첫 줄에서 문법 오류가 난다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-21-2"><input type="radio" name="q21" value="2" aria-label="21번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">한 번 10을 대입하면 let 변수는 변경할 수 없어 세 번째 줄에서 오류가 난다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-21-3"><input type="radio" name="q21" value="3" aria-label="21번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">let은 블록 안에서 사용할 수 없고 전역 변수 선언에만 사용할 수 있다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-21-4"><input type="radio" name="q21" value="4" aria-label="21번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">15가 출력된다. let은 초기값 없이 선언한 뒤 값을 대입하고 재할당할 수 있다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-21" hidden><div class="answer-line"><strong>정답 4번</strong><span id="your-21"></span></div><p class="topic-line">출제 토픽 · let 변수의 선언과 재할당</p><p>let total;은 유효한 선언이다. 선언문 실행 후 total의 값은 undefined이고, 이후 10을 대입할 수 있다.</p><p>total += 5로 값이 15가 된다. let은 블록 스코프를 가지며 같은 스코프에서 같은 이름을 다시 선언하는 것은 허용되지 않는다.</p><p class="takeaway"><strong>기억할 점</strong> 선언, 초기화, 재할당, 재선언을 서로 구분한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let" target="_blank" rel="noopener noreferrer">MDN · let</a></div></div>
+    </article>
+<article class="question" id="q22" data-id="22" tabindex="-1">
+      <div class="question-top"><span class="qnumber">22</span><span class="category">저장소</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="22" aria-pressed="false" aria-label="22번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-22">다음 코드 실행 후 「console.log의 출력 / members 키에 저장된 문자열」을 올바르게 짝지은 것은?</h2>
+      <div class="codebox"><div class="code-label">JavaScript</div><pre><code>localStorage.removeItem(&quot;members&quot;);
+const raw = localStorage.getItem(&quot;members&quot;);
+const members = raw === null ? [] : JSON.parse(raw);
+members.push({ name: &quot;Jin&quot; });
+localStorage.setItem(&quot;members&quot;, JSON.stringify(members));
+console.log(raw, members.length);</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-22"><legend class="sr-only">22번 정답 선택</legend><label class="option" id="opt-22-1"><input type="radio" name="q22" value="1" aria-label="22번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">undefined 1 / [{&quot;name&quot;:&quot;Jin&quot;}]</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-22-2"><input type="radio" name="q22" value="2" aria-label="22번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">null 1 / [{&quot;name&quot;:&quot;Jin&quot;}]</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-22-3"><input type="radio" name="q22" value="3" aria-label="22번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">null 0 / []</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-22-4"><input type="radio" name="q22" value="4" aria-label="22번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">null 1 / [object Object]</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-22" hidden><div class="answer-line"><strong>정답 2번</strong><span id="your-22"></span></div><p class="topic-line">출제 토픽 · 배열의 저장·복원과 저장 값이 없는 경우의 처리</p><p>키가 없을 때 getItem은 undefined가 아니라 null을 반환한다. 따라서 members에는 빈 배열 []이 들어간다.</p><p>객체 하나를 push하면 길이는 1이 된다. JSON.stringify(members)는 [{&quot;name&quot;:&quot;Jin&quot;}]이라는 JSON 문자열을 만든다.</p><p>실제 서비스에서는 저장된 문자열이 손상되었을 가능성도 고려해야 하지만, 이 문제에서는 키를 제거한 상태에서 시작한다.</p><p class="takeaway"><strong>기억할 점</strong> 없는 저장값은 null이며, 빈 배열 대체 후 JSON 문자열로 저장한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem" target="_blank" rel="noopener noreferrer">MDN · Storage.getItem()</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="noopener noreferrer">MDN · JSON</a></div></div>
+    </article>
+<article class="question" id="q23" data-id="23" tabindex="-1">
+      <div class="question-top"><span class="qnumber">23</span><span class="category">CSS</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="23" aria-pressed="false" aria-label="23번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-23">아래 .list 안에 .item이 3개 있다. 각 항목의 높이는 40px이며, margin·padding·border·gap은 모두 0이다. 항목 묶음의 배치를 올바르게 설명한 것은?</h2>
+      <div class="codebox"><div class="code-label">CSS</div><pre><code>.list {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.item {
+  flex: 0 0 40px;
+  width: 50px;
+}</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-23"><legend class="sr-only">23번 정답 선택</legend><label class="option" id="opt-23-1"><input type="radio" name="q23" value="1" aria-label="23번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">세로 중앙, 가로 왼쪽에 놓인다. 위·아래 남는 공간은 각각 90px이다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-23-2"><input type="radio" name="q23" value="2" aria-label="23번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">가로 중앙, 세로 위쪽에 놓인다. 위쪽 남는 공간은 0px이다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-23-3"><input type="radio" name="q23" value="3" aria-label="23번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">가로·세로 모두 중앙에 놓인다. 위·아래 남는 공간은 각각 150px이다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-23-4"><input type="radio" name="q23" value="4" aria-label="23번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">세로 아래쪽에 놓인다. 위쪽 남는 공간은 180px이다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-23" hidden><div class="answer-line"><strong>정답 1번</strong><span id="your-23"></span></div><p class="topic-line">출제 토픽 · Flexbox의 주축과 justify-content</p><p>column이므로 주축은 세로 방향이다. justify-content: center는 주축 방향의 남는 공간을 항목 묶음 앞뒤로 균등 배치한다.</p><p>총 항목 높이는 40×3=120px이므로 남는 공간 180px을 위·아래 90px씩 나눈다.</p><p>align-items: flex-start는 교차축의 시작 쪽을 뜻한다. 이 시험의 가로쓰기·왼쪽에서 오른쪽 방향 조건에서는 왼쪽 정렬이다.</p><p class="takeaway"><strong>기억할 점</strong> justify-content는 무조건 가로 정렬이 아니라 주축 정렬이다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-direction" target="_blank" rel="noopener noreferrer">MDN · flex-direction</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/justify-content" target="_blank" rel="noopener noreferrer">MDN · justify-content</a></div></div>
+    </article>
+<article class="question" id="q24" data-id="24" tabindex="-1">
+      <div class="question-top"><span class="qnumber">24</span><span class="category">HTML</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="24" aria-pressed="false" aria-label="24번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-24">사용자가 Python 라디오 버튼을 선택한 뒤 제출 버튼을 클릭했다. 그 결과로 옳은 것은?</h2>
+      <div class="codebox"><div class="code-label">HTML</div><pre><code>&lt;form action=&quot;/apply&quot; method=&quot;post&quot;&gt;
+  &lt;label&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;track&quot; value=&quot;java&quot; checked&gt;
+    Java
+  &lt;/label&gt;
+  &lt;label&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;track&quot; value=&quot;python&quot;&gt;
+    Python
+  &lt;/label&gt;
+  &lt;button type=&quot;submit&quot;&gt;제출&lt;/button&gt;
+&lt;/form&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-24"><legend class="sr-only">24번 정답 선택</legend><label class="option" id="opt-24-1"><input type="radio" name="q24" value="1" aria-label="24번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">두 입력의 value가 다르므로 동시에 선택된 상태가 된다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-24-2"><input type="radio" name="q24" value="2" aria-label="24번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">id가 같지 않으므로 같은 그룹으로 동작하지 않는다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-24-3"><input type="radio" name="q24" value="3" aria-label="24번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">같은 폼에서 name이 같으므로 Java는 선택 해제되고 track=python이 전송된다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-24-4"><input type="radio" name="q24" value="4" aria-label="24번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">두 입력의 name이 같으므로 첫 번째 값 track=java만 전송된다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-24" hidden><div class="answer-line"><strong>정답 3번</strong><span id="your-24"></span></div><p class="topic-line">출제 토픽 · 라디오 버튼과 단일 선택 그룹</p><p>이 두 라디오는 같은 폼과 트리에 속하고 name이 track으로 같으므로 하나의 그룹이다. Python을 선택하면 Java가 선택 해제된다.</p><p>제출할 때는 선택된 라디오의 값이 포함되므로 track=python이 전송된다.</p><p class="takeaway"><strong>기억할 점</strong> 이 조건의 라디오 그룹은 name으로 묶이고, 선택된 항목의 value가 전송된다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/radio" target="_blank" rel="noopener noreferrer">MDN · 라디오 입력</a> · <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#constructing-the-entry-list" target="_blank" rel="noopener noreferrer">WHATWG HTML · 폼 제출 데이터 구성</a></div></div>
+    </article>
+<article class="question" id="q25" data-id="25" tabindex="-1">
+      <div class="question-top"><span class="qnumber">25</span><span class="category">저장소</span><span class="difficulty">난도 상</span><button type="button" class="mark" data-mark="25" aria-pressed="false" aria-label="25번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-25">페이지를 처음 열기 전에 items 키에 JSON 문자열 [&quot;A&quot;]가 저장되어 있다. 추가 버튼을 한 번 클릭한 다음 새로고침했다. 클릭 직후와 새로고침 직후의 상태를 올바르게 설명한 것은? 새로고침하면 아래 스크립트가 처음부터 다시 실행된다.</h2>
+      <div class="codebox"><div class="code-label">HTML + JavaScript</div><pre><code>&lt;button id=&quot;add&quot;&gt;추가&lt;/button&gt;
+&lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+&lt;script&gt;
+  let items = JSON.parse(localStorage.getItem(&quot;items&quot;) || &quot;[]&quot;);
+  const list = document.querySelector(&quot;#list&quot;);
+  function render() {
+    list.innerHTML = &quot;&quot;;
+    for (const item of items) {
+      const li = document.createElement(&quot;li&quot;);
+      li.textContent = item;
+      list.append(li);
+    }
+  }
+  render();
+  document.querySelector(&quot;#add&quot;).addEventListener(&quot;click&quot;, () =&gt; {
+    items.push(&quot;B&quot;);
+    render();
+  });
+&lt;/script&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-25"><legend class="sr-only">25번 정답 선택</legend><label class="option" id="opt-25-1"><input type="radio" name="q25" value="1" aria-label="25번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">클릭하면 배열·화면·저장소가 모두 A,B가 되며, 새로고침 후에도 A,B가 남는다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-25-2"><input type="radio" name="q25" value="2" aria-label="25번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">클릭하면 배열만 A,B가 되고 화면은 A이다. 새로고침 후 화면에 A,B가 나타난다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-25-3"><input type="radio" name="q25" value="3" aria-label="25번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">클릭 직후 화면에는 A,B가 보이지만, 새로고침은 localStorage를 지우므로 아무것도 남지 않는다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-25-4"><input type="radio" name="q25" value="4" aria-label="25번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">클릭 직후 배열과 화면에는 A,B가 있지만 저장소에는 A만 있다. 새로고침하면 배열과 화면도 A로 돌아간다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-25" hidden><div class="answer-line"><strong>정답 4번</strong><span id="your-25"></span></div><p class="topic-line">출제 토픽 · 배열·저장소·화면의 상태 변화와 새로고침</p><p>클릭 시 items.push와 render가 실행되므로 메모리의 배열과 화면에는 A,B가 들어간다.</p><p>이벤트 처리 함수에 setItem이 없으므로 저장소는 여전히 [&quot;A&quot;]이다. 배열을 변경했다고 저장 문자열이 자동 갱신되지는 않는다.</p><p>새로고침 후 스크립트는 저장된 [&quot;A&quot;]를 다시 읽어 배열을 만들고 화면을 그린다.</p><p class="takeaway"><strong>기억할 점</strong> 메모리 상태, 저장된 문자열, 렌더링된 화면을 세 칸으로 나누어 추적한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API" target="_blank" rel="noopener noreferrer">MDN · Web Storage 사용</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="noopener noreferrer">MDN · JSON</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML" target="_blank" rel="noopener noreferrer">MDN · innerHTML</a></div></div>
+    </article>
+<article class="question" id="q26" data-id="26" tabindex="-1">
+      <div class="question-top"><span class="qnumber">26</span><span class="category">JavaScript</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="26" aria-pressed="false" aria-label="26번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-26">다음 코드의 출력 문자열은?</h2>
+      <div class="codebox"><div class="code-label">JavaScript</div><pre><code>const user = { name: &quot;Jin&quot;, scores: [70, 90] };
+const { name, scores } = user;
+const [first, second] = scores;
+console.log(`${name}: ${first + second}`);</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-26"><legend class="sr-only">26번 정답 선택</legend><label class="option" id="opt-26-1"><input type="radio" name="q26" value="1" aria-label="26번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">Jin: 7090</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-26-2"><input type="radio" name="q26" value="2" aria-label="26번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">Jin: 160</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-26-3"><input type="radio" name="q26" value="3" aria-label="26번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">${name}: ${first + second}</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-26-4"><input type="radio" name="q26" value="4" aria-label="26번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">undefined: 160</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-26" hidden><div class="answer-line"><strong>정답 2번</strong><span id="your-26"></span></div><p class="topic-line">출제 토픽 · ES6 구조 분해와 템플릿 리터럴</p><p>객체 구조 분해로 name에는 &quot;Jin&quot;, scores에는 배열 [70,90]이 들어간다. 배열 구조 분해로 first=70, second=90을 얻는다.</p><p>백틱으로 감싼 템플릿 리터럴의 ${...}는 표현식을 평가한다. 두 값은 숫자이므로 160으로 더해져 Jin: 160이 출력된다.</p><p class="takeaway"><strong>기억할 점</strong> 구조 분해로 값을 꺼내고, 템플릿 리터럴에서 표현식을 평가한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring" target="_blank" rel="noopener noreferrer">MDN · 구조 분해</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank" rel="noopener noreferrer">MDN · 템플릿 리터럴</a></div></div>
+    </article>
+<article class="question" id="q27" data-id="27" tabindex="-1">
+      <div class="question-top"><span class="qnumber">27</span><span class="category">DOM·이벤트</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="27" aria-pressed="false" aria-label="27번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-27">브라우저가 아래 HTML을 처음부터 파싱한다. head의 일반 인라인 script 실행 결과와 해결 방법으로 옳은 것은? 동적으로 삽입한 스크립트가 아니다.</h2>
+      <div class="codebox"><div class="code-label">HTML</div><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script&gt;
+    const title = document.querySelector(&quot;#title&quot;);
+    console.log(title);
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 id=&quot;title&quot;&gt;Front 평가&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-27"><legend class="sr-only">27번 정답 선택</legend><label class="option" id="opt-27-1"><input type="radio" name="q27" value="1" aria-label="27번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">null이 출력된다. DOMContentLoaded 이벤트의 처리 함수 안에서 해당 요소를 조회하도록 바꾸면 찾을 수 있다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-27-2"><input type="radio" name="q27" value="2" aria-label="27번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">h1 요소가 출력된다. head 안의 모든 script는 body 파싱이 끝날 때까지 자동으로 대기한다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-27-3"><input type="radio" name="q27" value="3" aria-label="27번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">빈 문자열이 출력된다. querySelector는 존재하지 않는 요소를 빈 문자열로 반환한다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-27-4"><input type="radio" name="q27" value="4" aria-label="27번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">null이 출력된다. 일반 인라인 script에 defer 속성만 붙이면 반드시 body 파싱 후 실행된다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-27" hidden><div class="answer-line"><strong>정답 1번</strong><span id="your-27"></span></div><p class="topic-line">출제 토픽 · DOM 생성과 JavaScript 실행 시점</p><p>해당 인라인 스크립트가 실행될 때는 뒤에 있는 h1이 아직 파싱되지 않았다. 따라서 querySelector는 null을 반환한다.</p><p>DOMContentLoaded 처리 함수 안으로 조회 코드를 옮기거나, 해당 요소 뒤로 script를 옮기면 된다.</p><p>defer는 일반 인라인 스크립트에 붙이는 것만으로 효과가 생기지 않는다. 일반 외부 스크립트의 defer와 구분한다.</p><p class="takeaway"><strong>기억할 점</strong> DOM 조회 시점에 대상 요소가 이미 만들어졌는지를 먼저 확인한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event" target="_blank" rel="noopener noreferrer">MDN · DOMContentLoaded</a> · <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_browsers_load_websites" target="_blank" rel="noopener noreferrer">MDN · 브라우저의 웹 페이지 처리</a></div></div>
+    </article>
+<article class="question" id="q28" data-id="28" tabindex="-1">
+      <div class="question-top"><span class="qnumber">28</span><span class="category">CSS</span><span class="difficulty">난도 상</span><button type="button" class="mark" data-mark="28" aria-pressed="false" aria-label="28번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-28">게시글 글자의 최종 색상은?</h2>
+      <div class="codebox"><div class="code-label">HTML + CSS</div><pre><code>&lt;style&gt;
+  #board .title       { color: red; }
+  .card &gt; p.title     { color: blue; }
+  section#board p     { color: green; }
+  #board div &gt; p      { color: orange; }
+&lt;/style&gt;
+&lt;section id=&quot;board&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;&lt;p class=&quot;title&quot;&gt;게시글&lt;/p&gt;&lt;/div&gt;
+&lt;/section&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-28"><legend class="sr-only">28번 정답 선택</legend><label class="option" id="opt-28-1"><input type="radio" name="q28" value="1" aria-label="28번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">blue</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-28-2"><input type="radio" name="q28" value="2" aria-label="28번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">green</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-28-3"><input type="radio" name="q28" value="3" aria-label="28번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">red</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-28-4"><input type="radio" name="q28" value="4" aria-label="28번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">orange</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-28" hidden><div class="answer-line"><strong>정답 3번</strong><span id="your-28"></span></div><p class="topic-line">출제 토픽 · 결합자와 우선순위를 적용한 스타일 판단</p><p>네 규칙 모두 해당 p에 일치한다. 명시도를 (ID, 클래스·속성·의사 클래스, 타입·의사 요소) 순서로 비교하면 각각 (1,1,0), (0,2,1), (1,0,2), (1,0,2)이다.</p><p>ID 개수가 같은 규칙끼리는 두 번째 자릿수를 비교한다. (1,1,0)의 #board .title이 이기므로 red이다.</p><p>공백이나 &gt; 같은 결합자 자체는 명시도를 높이지 않는다. 더 가까운 자식 관계이거나 더 뒤에 있다는 이유만으로 우선하지 않는다.</p><p class="takeaway"><strong>기억할 점</strong> 선택자 일치 여부를 먼저 확인한 뒤 명시도를 비교한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity" target="_blank" rel="noopener noreferrer">MDN · 선택자 명시도</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Child_combinator" target="_blank" rel="noopener noreferrer">MDN · 자식 결합자</a></div></div>
+    </article>
+<article class="question" id="q29" data-id="29" tabindex="-1">
+      <div class="question-top"><span class="qnumber">29</span><span class="category">DOM·이벤트</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="29" aria-pressed="false" aria-label="29번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-29">사용자가 버튼 안의 span 글자 영역을 직접 클릭했다. 다음 출력 결과는? 이 문서에는 이벤트 전파를 막는 다른 코드가 없다.</h2>
+      <div class="codebox"><div class="code-label">HTML + JavaScript</div><pre><code>&lt;button id=&quot;save&quot;&gt;&lt;span id=&quot;label&quot;&gt;저장&lt;/span&gt;&lt;/button&gt;
+&lt;script&gt;
+  const button = document.querySelector(&quot;#save&quot;);
+  button.addEventListener(&quot;click&quot;, (event) =&gt; {
+    console.log(event.type, event.target.id, event.currentTarget.id);
+  });
+&lt;/script&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-29"><legend class="sr-only">29번 정답 선택</legend><label class="option" id="opt-29-1"><input type="radio" name="q29" value="1" aria-label="29번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">click save save</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-29-2"><input type="radio" name="q29" value="2" aria-label="29번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">click save label</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-29-3"><input type="radio" name="q29" value="3" aria-label="29번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">submit label save</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-29-4"><input type="radio" name="q29" value="4" aria-label="29번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">click label save</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-29" hidden><div class="answer-line"><strong>정답 4번</strong><span id="your-29"></span></div><p class="topic-line">출제 토픽 · 이벤트의 개념과 처리 함수</p><p>이벤트의 종류는 click이다. 이 예제의 실제 클릭 대상은 span이므로 event.target.id는 label이다.</p><p>이 처리 함수는 button에 등록되어 실행되므로 event.currentTarget.id는 save이다. span의 클릭 이벤트가 버튼으로 버블링되어 리스너가 실행된다.</p><p class="takeaway"><strong>기억할 점</strong> target은 이 예제의 실제 발생 대상, currentTarget은 현재 처리 중인 리스너가 등록된 대상이다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener noreferrer">MDN · addEventListener()</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target" target="_blank" rel="noopener noreferrer">MDN · Event.target</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget" target="_blank" rel="noopener noreferrer">MDN · Event.currentTarget</a></div></div>
+    </article>
+<article class="question" id="q30" data-id="30" tabindex="-1">
+      <div class="question-top"><span class="qnumber">30</span><span class="category">CSS</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="30" aria-pressed="false" aria-label="30번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-30">아래 코드의 .panel에 최종 적용되는 flex-direction과 A, B의 배치 방향은?</h2>
+      <div class="codebox"><div class="code-label">HTML + CSS</div><pre><code>&lt;style&gt;
+  .panel {
+    display: flex;
+    flex-direction: row;
+  }
+  #layout { flex-direction: column; }
+  .page .panel { flex-direction: row-reverse; }
+&lt;/style&gt;
+&lt;div class=&quot;page&quot;&gt;
+  &lt;div id=&quot;layout&quot; class=&quot;panel&quot;&gt;
+    &lt;span&gt;A&lt;/span&gt;&lt;span&gt;B&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-30"><legend class="sr-only">30번 정답 선택</legend><label class="option" id="opt-30-1"><input type="radio" name="q30" value="1" aria-label="30번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">column / A 위, B 아래</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-30-2"><input type="radio" name="q30" value="2" aria-label="30번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">row / A 왼쪽, B 오른쪽</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-30-3"><input type="radio" name="q30" value="3" aria-label="30번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">row-reverse / A 오른쪽, B 왼쪽</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-30-4"><input type="radio" name="q30" value="4" aria-label="30번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">column-reverse / A 아래, B 위</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-30" hidden><div class="answer-line"><strong>정답 1번</strong><span id="your-30"></span></div><p class="topic-line">출제 토픽 · CSS 우선순위에 따른 Flexbox 방향 결정</p><p>#layout의 ID 선택자가 .panel 및 .page .panel보다 명시도가 높으므로 flex-direction은 column이다.</p><p>display: flex는 .panel 규칙에서 그대로 적용된다. 이 시험의 가로쓰기 조건에서 column은 위에서 아래 방향이므로 A가 위에, B가 아래에 놓인다.</p><p class="takeaway"><strong>기억할 점</strong> 속성마다 승리하는 선언을 따로 찾고, 결정된 방향에 따라 주축을 판단한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity" target="_blank" rel="noopener noreferrer">MDN · 선택자 명시도</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-direction" target="_blank" rel="noopener noreferrer">MDN · flex-direction</a></div></div>
+    </article>
+<article class="question" id="q31" data-id="31" tabindex="-1">
+      <div class="question-top"><span class="qnumber">31</span><span class="category">저장소</span><span class="difficulty">난도 중</span><button type="button" class="mark" data-mark="31" aria-pressed="false" aria-label="31번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-31">일반 브라우징 환경에서 두 저장소에 값을 저장했다. 같은 탭의 새로고침, 그리고 해당 탭의 페이지 세션을 끝낸 뒤 독립된 새 탭에서 같은 출처를 여는 상황을 올바르게 설명한 것은? 세션 복원·시크릿 모드·사용자 데이터 삭제·저장소 차단은 고려하지 않는다.</h2>
+      
+      <fieldset class="options" aria-labelledby="qtitle-31"><legend class="sr-only">31번 정답 선택</legend><label class="option" id="opt-31-1"><input type="radio" name="q31" value="1" aria-label="31번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">새로고침하면 두 저장소의 값이 모두 사라진다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-31-2"><input type="radio" name="q31" value="2" aria-label="31번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">새로고침하면 둘 다 유지된다. 기존 페이지 세션을 끝낸 뒤 독립된 새 탭에서는 localStorage 값은 유지되고 이전 sessionStorage 값은 공유되지 않는다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-31-3"><input type="radio" name="q31" value="3" aria-label="31번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">새로고침하면 localStorage만 사라지고 sessionStorage는 유지된다.</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-31-4"><input type="radio" name="q31" value="4" aria-label="31번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">두 저장소 모두 출처만 같으면 탭의 페이지 세션과 관계없이 항상 같은 데이터를 공유한다.</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-31" hidden><div class="answer-line"><strong>정답 2번</strong><span id="your-31"></span></div><p class="topic-line">출제 토픽 · localStorage와 sessionStorage의 수명</p><p>localStorage는 출처별 저장소로 브라우저 세션을 넘어 유지될 수 있다. 다만 명시적 삭제나 브라우저 정책 등에 따라 삭제될 수 있으므로 영구 보장이라고 표현하면 안 된다.</p><p>sessionStorage는 출처뿐 아니라 탭의 페이지 세션을 기준으로 분리된다. 같은 페이지 세션에서 새로고침할 때는 유지되지만, 문제처럼 세션을 끝내고 독립된 새 탭을 열면 이전 값이 공유되지 않는다.</p><p class="takeaway"><strong>기억할 점</strong> sessionStorage도 새로고침에는 유지된다. 새로고침과 페이지 세션 종료를 구분한다.</p><div class="sources">확인 문서 · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank" rel="noopener noreferrer">MDN · localStorage</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage" target="_blank" rel="noopener noreferrer">MDN · sessionStorage</a></div></div>
+    </article>
+<article class="question" id="q32" data-id="32" tabindex="-1">
+      <div class="question-top"><span class="qnumber">32</span><span class="category">HTML</span><span class="difficulty">난도 상</span><button type="button" class="mark" data-mark="32" aria-pressed="false" aria-label="32번 검토 표시">☆ 검토</button></div>
+      <h2 id="qtitle-32">입력 상태를 바꾸지 않고 아래 제출 버튼을 직접 클릭했다. 실제 제출 데이터에 포함되는 이름·값의 집합을 모두 올바르게 나열한 것은? 유효성 검사나 제출을 막는 다른 코드는 없다.</h2>
+      <div class="codebox"><div class="code-label">HTML</div><pre><code>&lt;form action=&quot;/apply&quot; method=&quot;post&quot;&gt;
+  &lt;input name=&quot;loginId&quot; value=&quot;jin&quot;&gt;
+  &lt;input id=&quot;nickname&quot; value=&quot;king&quot;&gt;
+  &lt;input name=&quot;code&quot; value=&quot;A1&quot; disabled&gt;
+  &lt;input name=&quot;grade&quot; value=&quot;A&quot; readonly&gt;
+  &lt;input type=&quot;checkbox&quot; name=&quot;skill&quot; value=&quot;java&quot; checked&gt;
+  &lt;input type=&quot;checkbox&quot; name=&quot;skill&quot; value=&quot;js&quot;&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;region&quot; value=&quot;seoul&quot; checked&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;region&quot; value=&quot;busan&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;mode&quot; value=&quot;join&quot;&gt;
+  &lt;input name=&quot;memo&quot; value=&quot;ok&quot; style=&quot;display: none&quot;&gt;
+  &lt;button type=&quot;submit&quot; name=&quot;action&quot; value=&quot;save&quot;&gt;제출&lt;/button&gt;
+&lt;/form&gt;</code></pre></div>
+      <fieldset class="options" aria-labelledby="qtitle-32"><legend class="sr-only">32번 정답 선택</legend><label class="option" id="opt-32-1"><input type="radio" name="q32" value="1" aria-label="32번 문제 1번 선택지"><span class="choice-number">1</span><span class="choice-text">loginId=jin, nickname=king, code=A1, grade=A, skill=java,
+region=seoul, mode=join, memo=ok, action=save</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-32-2"><input type="radio" name="q32" value="2" aria-label="32번 문제 2번 선택지"><span class="choice-number">2</span><span class="choice-text">loginId=jin, skill=java, region=seoul, mode=join, action=save</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-32-3"><input type="radio" name="q32" value="3" aria-label="32번 문제 3번 선택지"><span class="choice-number">3</span><span class="choice-text">loginId=jin, grade=A, skill=java, region=seoul,
+mode=join, memo=ok, action=save</span><span class="choice-state" aria-hidden="true"></span></label><label class="option" id="opt-32-4"><input type="radio" name="q32" value="4" aria-label="32번 문제 4번 선택지"><span class="choice-number">4</span><span class="choice-text">loginId=jin, grade=A, skill=java, skill=js, region=seoul,
+region=busan, mode=join, memo=ok, action=save</span><span class="choice-state" aria-hidden="true"></span></label></fieldset>
+      <div class="explanation" id="explanation-32" hidden><div class="answer-line"><strong>정답 3번</strong><span id="your-32"></span></div><p class="topic-line">출제 토픽 · Form 제출 시 포함되는 입력 데이터</p><p>name이 없는 nickname과 disabled인 code는 제외된다. readonly인 grade는 제출에 포함된다.</p><p>체크박스·라디오에서는 선택된 skill=java와 region=seoul만 포함된다.</p><p>hidden 입력과 CSS로 숨긴 memo는 숨겨져 있다는 이유로 제외되지 않는다. 실제 클릭한 제출 버튼도 name과 value가 있으므로 action=save가 포함된다.</p><p class="takeaway"><strong>기억할 점</strong> name·disabled·선택 상태·실제 제출 버튼을 확인한다. 화면에 보이는지는 별개의 기준이다.</p><div class="sources">확인 문서 · <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#constructing-the-entry-list" target="_blank" rel="noopener noreferrer">WHATWG HTML · 폼 제출 데이터 구성</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/radio" target="_blank" rel="noopener noreferrer">MDN · 라디오 입력</a></div></div>
+    </article>
+    <div class="bottom-actions"><p>답안을 모두 확인했나요?<br>채점 후 정답·해설과 토픽별 결과를 볼 수 있습니다.</p><button class="btn primary" id="grade-bottom" type="button">채점하기</button></div>
+  </main>
+</div>
+<footer class="footer">공지 범위 기반 자체 제작 · 실제 기출 아님 · MDN / WHATWG 참고 문서는 각 문항 해설에서 확인할 수 있습니다.<br>이 모의고사는 답안이나 점수를 외부 서버로 전송하지 않습니다.</footer>
+<script>
+"use strict";
+(() => {
+  const DATA = [{"id": 1, "answer": 2, "category": "HTML"}, {"id": 2, "answer": 3, "category": "DOM·이벤트"}, {"id": 3, "answer": 1, "category": "HTML"}, {"id": 4, "answer": 4, "category": "HTML"}, {"id": 5, "answer": 3, "category": "HTML"}, {"id": 6, "answer": 2, "category": "CSS"}, {"id": 7, "answer": 4, "category": "CSS"}, {"id": 8, "answer": 1, "category": "CSS"}, {"id": 9, "answer": 4, "category": "DOM·이벤트"}, {"id": 10, "answer": 3, "category": "CSS"}, {"id": 11, "answer": 2, "category": "CSS"}, {"id": 12, "answer": 1, "category": "CSS"}, {"id": 13, "answer": 3, "category": "JavaScript"}, {"id": 14, "answer": 4, "category": "JavaScript"}, {"id": 15, "answer": 1, "category": "JavaScript"}, {"id": 16, "answer": 2, "category": "DOM·이벤트"}, {"id": 17, "answer": 2, "category": "JavaScript"}, {"id": 18, "answer": 4, "category": "DOM·이벤트"}, {"id": 19, "answer": 1, "category": "저장소"}, {"id": 20, "answer": 3, "category": "저장소"}, {"id": 21, "answer": 4, "category": "JavaScript"}, {"id": 22, "answer": 2, "category": "저장소"}, {"id": 23, "answer": 1, "category": "CSS"}, {"id": 24, "answer": 3, "category": "HTML"}, {"id": 25, "answer": 4, "category": "저장소"}, {"id": 26, "answer": 2, "category": "JavaScript"}, {"id": 27, "answer": 1, "category": "DOM·이벤트"}, {"id": 28, "answer": 3, "category": "CSS"}, {"id": 29, "answer": 4, "category": "DOM·이벤트"}, {"id": 30, "answer": 1, "category": "CSS"}, {"id": 31, "answer": 2, "category": "저장소"}, {"id": 32, "answer": 3, "category": "HTML"}];
+  const KEY = "ssafy-front-practice-20261009-v1";
+  const VERSION = 1;
+  const TOTAL = DATA.length;
+  let state = {version: VERSION, answers: {}, marks: [], deadline: null, startedAt: null, graded: false, gradedAt: null, timedOut: false};
+  let wrongOnly = false;
+  let storageOK = true;
+  let timerID = null;
+  const byId = (id) => document.getElementById(id);
+  const nav = (id) => document.querySelector(`[data-nav="${id}"]`);
+  const validAnswer = (value) => Number.isInteger(value) && value >= 1 && value <= 4;
+  function isValidState(candidate) {
+    return candidate && candidate.version === VERSION && candidate.answers && typeof candidate.answers === "object" && !Array.isArray(candidate.answers) &&
+      Object.entries(candidate.answers).every(([key, value]) => /^\d+$/.test(key) && +key >= 1 && +key <= TOTAL && validAnswer(value)) &&
+      Array.isArray(candidate.marks) && candidate.marks.every(id => Number.isInteger(id) && id >= 1 && id <= TOTAL) &&
+      (candidate.deadline === null || Number.isFinite(candidate.deadline)) &&
+      (candidate.startedAt === null || Number.isFinite(candidate.startedAt)) && typeof candidate.graded === "boolean" &&
+      (candidate.gradedAt === null || Number.isFinite(candidate.gradedAt));
+  }
+  function showStorage() {
+    byId("save-status").textContent = storageOK ? "이 브라우저에 답안을 자동 저장합니다. 다른 기기와 동기화하지 않습니다." : "자동저장을 사용할 수 없습니다. 풀기·채점은 가능하지만 새로고침하면 진행 내용이 사라집니다.";
+  }
+  function save() {
+    try { window.localStorage.setItem(KEY, JSON.stringify(state)); }
+    catch (_) { storageOK = false; }
+    showStorage();
+  }
+  function load() {
+    try {
+      const raw = window.localStorage.getItem(KEY);
+      if (raw) {
+        try { const parsed = JSON.parse(raw); if (isValidState(parsed)) state = parsed; }
+        catch (_) { /* 손상된 저장값은 버리고 새 시험으로 시작한다. */ }
+      }
+      window.localStorage.setItem(KEY, JSON.stringify(state));
+    } catch (_) { storageOK = false; }
+    showStorage();
+  }
+  function answeredCount() { return DATA.filter(q => validAnswer(state.answers[q.id])).length; }
+  function remainingSeconds() { return state.deadline === null ? 3600 : Math.max(0, Math.ceil((state.deadline - Date.now()) / 1000)); }
+  function formatTime(seconds) { return `${String(Math.floor(seconds / 60)).padStart(2,"0")}:${String(seconds % 60).padStart(2,"0")}`; }
+  function updateQuestion(q) {
+    const selected = state.answers[q.id];
+    const article = byId(`q${q.id}`);
+    const link = nav(q.id);
+    const marked = state.marks.includes(q.id);
+    link.classList.toggle("answered", validAnswer(selected));
+    link.classList.toggle("marked", marked);
+    link.setAttribute("aria-label", `${q.id}번 — ${selected ? `${selected}번 선택` : "미응답"}${marked ? ", 검토 표시" : ""}`);
+    const mark = article.querySelector(".mark");
+    mark.setAttribute("aria-pressed", String(marked));
+    mark.textContent = marked ? "★ 검토" : "☆ 검토";
+    article.querySelectorAll('input[type="radio"]').forEach(input => {
+      input.checked = Number(input.value) === selected;
+      input.disabled = state.graded;
+      input.closest(".option").classList.toggle("selected", input.checked);
+    });
+  }
+  function updateProgress() {
+    const answered = answeredCount();
+    byId("answered").textContent = `${answered} / ${TOTAL}`;
+    byId("progress-fill").style.width = `${answered / TOTAL * 100}%`;
+    byId("progress-meter").setAttribute("aria-valuenow", String(answered));
+    byId("remaining-label").textContent = state.graded ? "채점 완료" : `미응답 ${TOTAL - answered}문항`;
+    byId("grade-bottom").disabled = state.graded;
+    byId("grade-top").disabled = state.graded;
+    byId("start-timer").disabled = state.graded || state.deadline !== null;
+    byId("start-timer").textContent = state.graded ? "시험 종료" : state.deadline !== null ? "타이머 진행 중" : "60분 타이머 시작";
+  }
+  function applyFilter() {
+    let shown = 0;
+    DATA.forEach(q => {
+      const show = !wrongOnly || state.answers[q.id] !== q.answer;
+      byId(`q${q.id}`).hidden = !show;
+      if (show) shown++;
+    });
+    byId("empty-note").hidden = shown !== 0;
+    byId("filter-wrong").textContent = wrongOnly ? "전체 문제 보기" : "오답·미응답만 보기";
+    byId("filter-wrong").setAttribute("aria-pressed", String(wrongOnly));
+  }
+  function renderGrade(scroll = false) {
+    let correct = 0;
+    const categories = {};
+    DATA.forEach(q => {
+      const selected = state.answers[q.id];
+      const isCorrect = selected === q.answer;
+      if (isCorrect) correct++;
+      if (!categories[q.category]) categories[q.category] = {correct:0, total:0};
+      categories[q.category].total++;
+      if (isCorrect) categories[q.category].correct++;
+      const article = byId(`q${q.id}`);
+      article.classList.add("graded");
+      byId(`explanation-${q.id}`).hidden = false;
+      byId(`your-${q.id}`).textContent = selected ? `내 답 ${selected}번 · ${isCorrect ? "정답" : "오답"}` : "미응답 · 오답 처리";
+      byId(`your-${q.id}`).style.color = isCorrect ? "var(--accent)" : "var(--wrong)";
+      article.querySelectorAll(".option").forEach((label, index) => {
+        const answer = index + 1;
+        label.classList.toggle("correct-choice", answer === q.answer);
+        label.classList.toggle("wrong-choice", answer === selected && !isCorrect);
+        label.querySelector(".choice-state").textContent = answer === q.answer ? "✓" : answer === selected && !isCorrect ? "✕" : "";
+      });
+      nav(q.id).classList.toggle("correct", isCorrect);
+      nav(q.id).classList.toggle("wrong", Boolean(selected) && !isCorrect);
+      nav(q.id).classList.toggle("unanswered-result", !selected);
+      updateQuestion(q);
+    });
+    const unanswered = TOTAL - answeredCount();
+    const score = correct * 100 / TOTAL;
+    byId("score").textContent = String(score);
+    byId("result-summary").textContent = `정답 ${correct}문항 · 오답 ${TOTAL - correct - unanswered}문항 · 미응답 ${unanswered}문항`;
+    const used = state.startedAt && state.gradedAt ? Math.max(0, Math.floor((state.gradedAt - state.startedAt) / 1000)) : null;
+    byId("result-note").textContent = (state.timedOut ? "제한 시간 종료로 자동 채점했습니다. " : "") + (used !== null ? `타이머 기준 경과 ${Math.floor(used / 60)}분 ${used % 60}초. ` : "타이머 없이 풀이했습니다. ") + "문항당 3.125점이며 미응답은 오답으로 처리합니다.";
+    byId("topic-summary").replaceChildren();
+    for (const [category, stats] of Object.entries(categories)) {
+      const item = document.createElement("div"); item.className = "topic-stat";
+      const name = document.createElement("span"); name.textContent = category;
+      const count = document.createElement("strong"); count.textContent = `${stats.correct} / ${stats.total}`;
+      item.append(name,count); byId("topic-summary").append(item);
+    }
+    byId("result").hidden = false;
+    updateProgress(); applyFilter();
+    if (scroll) byId("result").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+  function grade(timedOut = false) {
+    if (state.graded) return;
+    const missing = TOTAL - answeredCount();
+    if (!timedOut && missing > 0 && !window.confirm(`미응답이 ${missing}문항 있습니다. 미응답을 오답으로 처리하고 채점할까요?`)) return;
+    state.graded = true; state.gradedAt = Date.now(); state.timedOut = timedOut;
+    if (timerID !== null) clearInterval(timerID);
+    save(); renderGrade(true); tick();
+  }
+  function tick() {
+    if (state.graded) {
+      const left = state.deadline !== null ? Math.max(0, Math.ceil((state.deadline - state.gradedAt) / 1000)) : 3600;
+      byId("clock").textContent = formatTime(left);
+      byId("timer-label").textContent = state.deadline !== null ? "종료 시 남은 시간" : "타이머 미사용";
+      return;
+    }
+    const seconds = remainingSeconds();
+    byId("clock").textContent = formatTime(seconds);
+    byId("clock").classList.toggle("urgent", state.deadline !== null && seconds <= 300);
+    byId("timer-label").textContent = state.deadline === null ? "타이머 대기" : "남은 시간";
+    if (state.deadline !== null && seconds <= 0) grade(true);
+  }
+  function startTimer() {
+    if (state.graded || state.deadline !== null) return;
+    state.startedAt = Date.now(); state.deadline = state.startedAt + 60 * 60 * 1000;
+    save(); updateProgress(); tick();
+    if (timerID === null) timerID = setInterval(tick, 500);
+  }
+  function reset() {
+    if (!window.confirm("이 모의고사의 답안·점수·검토 표시·타이머를 모두 초기화할까요? 다른 사이트 데이터는 지우지 않습니다.")) return;
+    if (timerID !== null) clearInterval(timerID);
+    state = {version:VERSION, answers:{}, marks:[], deadline:null, startedAt:null, graded:false, gradedAt:null, timedOut:false};
+    save(); window.location.reload();
+  }
+  document.querySelectorAll('.options input[type="radio"]').forEach(input => {
+    input.addEventListener("change", () => {
+      if (state.graded) return;
+      const id = Number(input.name.slice(1)); const answer = Number(input.value);
+      if (!validAnswer(answer)) return;
+      state.answers[id] = answer;
+      updateQuestion(DATA[id - 1]); updateProgress(); save();
+    });
+  });
+  document.querySelectorAll("[data-mark]").forEach(button => button.addEventListener("click", () => {
+    const id = Number(button.dataset.mark);
+    state.marks = state.marks.includes(id) ? state.marks.filter(x => x !== id) : [...state.marks, id];
+    updateQuestion(DATA[id - 1]); save();
+  }));
+  document.querySelectorAll("[data-nav]").forEach(link => link.addEventListener("click", event => {
+    event.preventDefault(); const id = Number(link.dataset.nav);
+    if (byId(`q${id}`).hidden) { wrongOnly = false; applyFilter(); }
+    byId(`q${id}`).focus({preventScroll:true}); byId(`q${id}`).scrollIntoView({behavior:"smooth",block:"start"});
+  }));
+  byId("grade-top").addEventListener("click", () => grade());
+  byId("grade-bottom").addEventListener("click", () => grade());
+  byId("start-timer").addEventListener("click", startTimer);
+  byId("reset").addEventListener("click", reset);
+  byId("filter-wrong").addEventListener("click", () => {wrongOnly = !wrongOnly; applyFilter();});
+  byId("first-blank").addEventListener("click", () => {
+    const q = DATA.find(q => !validAnswer(state.answers[q.id]));
+    if (!q) { byId("feedback").hidden = false; byId("feedback").textContent = "모든 문항에 답했습니다. 채점하기를 눌러 결과를 확인하세요."; return; }
+    if (wrongOnly && byId(`q${q.id}`).hidden) {wrongOnly = false; applyFilter();}
+    byId(`q${q.id}`).focus({preventScroll:true}); byId(`q${q.id}`).scrollIntoView({behavior:"smooth",block:"start"});
+  });
+  byId("print").addEventListener("click", () => {
+    document.body.classList.add("print-questions");
+    try { window.print(); } finally { document.body.classList.remove("print-questions"); }
+  });
+  window.addEventListener("afterprint", () => document.body.classList.remove("print-questions"));
+  load(); DATA.forEach(updateQuestion); updateProgress();
+  if (state.graded) renderGrade();
+  tick(); if (!state.graded && state.deadline !== null) timerID = setInterval(tick, 500);
+})();
+</script>
+</body></html>
