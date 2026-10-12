@@ -1,3 +1,5 @@
+import {parse, serialize, defaultTreeAdapter as tree} from 'parse5';
+
 // Runs before imported scripts. No same-origin permission: the document cannot read
 // the host DOM or IndexedDB. A private MessagePort is bound to this document only.
 function bootstrap(initial, runId) {
@@ -15,7 +17,7 @@ function bootstrap(initial, runId) {
     if (event.data.type === 'failed') {
       writable = false;
       const banner = document.getElementById('__storage_warning') || document.createElement('div');
-      banner.id = '__storage_warning'; banner.textContent = '답안 저장 실패: 현재 풀이는 메모리에만 있습니다. 앱의 다시 저장 버튼을 눌러 주세요.';
+      banner.id = '__storage_warning'; banner.textContent = '문서 데이터 저장 실패: 현재 값은 메모리에만 있습니다. 리더의 다시 저장 버튼을 눌러 주세요.';
       banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:2147483647;padding:14px;background:#9d2430;color:white;font:14px sans-serif';
       document.body?.append(banner);
     }
@@ -69,14 +71,28 @@ function bootstrap(initial, runId) {
   addEventListener('DOMContentLoaded', () => send({type:'ready'}));
 }
 export function createRunner(source, web, runId) {
-  const parsed = new DOMParser().parseFromString(source, 'text/html');
-  parsed.querySelectorAll('base, meta[http-equiv]').forEach(element => element.remove());
-  const policy = document.createElement('meta');
-  policy.httpEquiv = 'Content-Security-Policy';
-  policy.content = "default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval'; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; media-src data: blob:; connect-src 'none'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'";
-  const script = document.createElement('script');
+  // A DOMParser document can request images before CSP is installed. Parse only
+  // into a JS tree, so imported URLs cannot be fetched during preparation.
+  const parsed = parse(source);
+  function removeOverrides(node) {
+    for (const child of [...(node.childNodes || [])]) {
+      if (child.tagName === 'base' || (child.tagName === 'meta' && child.attrs.some(attr => attr.name === 'http-equiv'))) tree.detachNode(child);
+      else {removeOverrides(child);if(child.content)removeOverrides(child.content);}
+    }
+  }
+  removeOverrides(parsed);
+  const html = parsed.childNodes.find(node => node.tagName === 'html');
+  const head = html.childNodes.find(node => node.tagName === 'head');
+  const namespace = 'http://www.w3.org/1999/xhtml';
+  const policy = tree.createElement('meta',namespace,[
+    {name:'http-equiv',value:'Content-Security-Policy'},
+    {name:'content',value:"default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval'; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; media-src data: blob:; connect-src 'none'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"}
+  ]);
+  const script = tree.createElement('script',namespace,[]);
   const json = JSON.stringify(web).replace(/</g, '\\u003c');
-  script.textContent = `(${bootstrap.toString()})(${json}, ${JSON.stringify(runId)});`;
-  parsed.head.prepend(script); parsed.head.prepend(policy);
-  return '<!doctype html>\n' + parsed.documentElement.outerHTML;
+  tree.insertText(script,`(${bootstrap.toString()})(${json}, ${JSON.stringify(runId)});`);
+  if(head.childNodes.length)tree.insertBefore(head,script,head.childNodes[0]);else tree.appendChild(head,script);
+  tree.insertBefore(head,policy,script);
+  const output=serialize(parsed);
+  return parsed.childNodes.some(node=>node.nodeName==='#documentType') ? output : '<!doctype html>\n'+output;
 }
