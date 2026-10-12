@@ -1,6 +1,11 @@
 import {readdirSync, readFileSync, writeFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
-const files=['./','./index.html','./demo-exam.html',...readdirSync('dist/assets').map(name=>'./assets/'+name)];
+function collect(directory, prefix='') {
+  return readdirSync(directory,{withFileTypes:true}).flatMap(entry => entry.isDirectory()
+    ? collect(`${directory}/${entry.name}`,`${prefix}${entry.name}/`)
+    : entry.name === 'sw.js' ? [] : ['./'+prefix+entry.name]);
+}
+const files=['./',...collect('dist').sort()];
 const digest = createHash('sha256');
 for (const file of files.filter(file => file !== './')) digest.update(readFileSync('dist/' + file));
 const name='html-study-'+digest.digest('hex').slice(0,12);

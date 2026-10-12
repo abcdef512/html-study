@@ -1,6 +1,6 @@
 {
   "name": "html-study",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -18,7 +18,8 @@
     "@codemirror/lang-html": "^6.4.11",
     "@codemirror/language": "^6.12.3",
     "@codemirror/state": "^6.5.4",
-    "@codemirror/view": "^6.40.0"
+    "@codemirror/view": "^6.40.0",
+    "parse5": "^8.0.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

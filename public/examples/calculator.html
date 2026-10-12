@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>간단한 계산기</title>
+<style>body{font:17px/1.6 system-ui,sans-serif;margin:0;padding:24px;color:#24372d;background:#f3f6f2}main{max-width:480px;margin:auto}label{display:block;margin:14px 0}input,select,button{font:inherit;padding:12px;width:100%;box-sizing:border-box;border:1px solid #ccd6c9;border-radius:8px}button{background:#315b46;color:white;margin-top:12px}output{display:block;font-size:28px;margin:20px 0;overflow-wrap:anywhere}</style></head>
+<body><main><h1>간단한 계산기</h1><p>HTML 안에 들어 있는 입력과 계산 기능을 리더에서 실행합니다.</p>
+<form id="calculator"><label>첫 번째 숫자<input id="a" type="number" step="any" value="12" required></label><label>계산<select id="operation"><option value="add">더하기</option><option value="subtract">빼기</option><option value="multiply">곱하기</option><option value="divide">나누기</option></select></label><label>두 번째 숫자<input id="b" type="number" step="any" value="3" required></label><button>계산하기</button></form><output id="result" aria-live="polite">결과를 확인해 보세요.</output>
+<script>document.querySelector('#calculator').addEventListener('submit',event=>{event.preventDefault();const a=Number(document.querySelector('#a').value),b=Number(document.querySelector('#b').value),op=document.querySelector('#operation').value;document.querySelector('#result').textContent=op==='divide'&&b===0?'0으로 나눌 수 없습니다.':'결과: '+({add:()=>a+b,subtract:()=>a-b,multiply:()=>a*b,divide:()=>a/b}[op]());});</script>
+</main></body></html>

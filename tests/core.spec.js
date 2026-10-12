@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test';
 import {readFileSync} from 'node:fs';
 const exam=readFileSync(new URL('../SSAFY_Front_32_Mock_Exam.html',import.meta.url),'utf8');
 const key='ssafy-front-practice-20261009-v1';
-async function start(page){await page.goto('/');await page.getByRole('button',{name:'모의고사 추가'}).click();await expect(page.frameLocator('iframe').locator('.question')).toHaveCount(32);}
+async function start(page){await page.goto('/');await page.locator('#examples').evaluate(el=>el.open=true);await page.getByRole('button',{name:'모의고사 추가'}).click();await expect(page.frameLocator('iframe').locator('.question')).toHaveCount(32);}
 async function stored(page){return page.evaluate(async()=>{const db=await new Promise(resolve=>{const r=indexedDB.open('html-study-v1',1);r.onsuccess=()=>resolve(r.result);});return await new Promise(resolve=>{const r=db.transaction('library').objectStore('library').get('documents');r.onsuccess=()=>resolve(r.result);});});}
 test('32문항 가져오기, confirm 취소·확인, 점수·해설과 답안·검토·타이머 복원',async({page})=>{
   await start(page);const f=page.frameLocator('iframe');

@@ -1,0 +1,6 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>저장되는 메모</title>
+<style>body{font:17px/1.7 system-ui,sans-serif;margin:0;padding:24px;background:#fffaf0;color:#393526}main{max-width:560px;margin:auto}textarea{font:inherit;width:100%;min-height:240px;box-sizing:border-box;border:1px solid #d9d0b8;border-radius:10px;padding:14px}button{font:inherit;padding:12px 22px;background:#315b46;color:white;border:0;border-radius:8px;margin-top:14px}#state{font-size:14px}</style></head>
+<body><main><h1>저장되는 메모</h1><p>문서 자체의 localStorage 저장 기능을 확인하는 예제입니다.</p><label for="memo">메모 내용</label><textarea id="memo" placeholder="메모를 입력해 보세요."></textarea><button id="save">메모 저장</button><p id="state" role="status"></p>
+<script>const memo=document.querySelector('#memo');memo.value=localStorage.getItem('memo')||'';document.querySelector('#save').onclick=()=>{localStorage.setItem('memo',memo.value);document.querySelector('#state').textContent='저장을 요청했습니다. 리더의 저장됨 표시를 확인하세요.';};</script>
+</main></body></html>
